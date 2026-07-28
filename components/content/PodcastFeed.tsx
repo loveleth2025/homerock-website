@@ -1,29 +1,19 @@
-"use client";
-
-import { useEffect, useState } from "react";
+import { getPodcastEpisodes } from "@/lib/youtube/getPodcastEpisodes";
 import { fallbackYoutubeId } from "@/lib/content/podcast";
 
-export function PodcastFeed() {
-  const [videoId, setVideoId] = useState(fallbackYoutubeId);
-  const [title, setTitle] = useState("Sugar Spice & Spirits");
+/**
+ * Embeds the latest episode from the same YouTube playlist that powers
+ * <EpisodeList> — both read through the cached, deduplicated
+ * `getPodcastEpisodes()` call, so this never triggers a second API request.
+ * Falls back to a known-good video if the playlist is unavailable, rather
+ * than rendering a broken/empty embed.
+ */
+export async function PodcastFeed() {
+  const result = await getPodcastEpisodes();
+  const latest = result.status === "success" ? result.episodes[0] : undefined;
 
-  useEffect(() => {
-    let cancelled = false;
-    fetch("/api/latest-episode")
-      .then((res) => res.json())
-      .then((data: { videoId: string | null; title: string | null }) => {
-        if (!cancelled && data.videoId) {
-          setVideoId(data.videoId);
-          if (data.title) setTitle(data.title);
-        }
-      })
-      .catch(() => {
-        // Keep the fallback video — matches the legacy page's failure behavior.
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const videoId = latest?.videoId ?? fallbackYoutubeId;
+  const title = latest?.title ?? "Sugar Spice & Spirits";
 
   return (
     <div className="bg-cream p-lg rounded-sm mb-lg">
@@ -36,6 +26,7 @@ export function PodcastFeed() {
           allowFullScreen
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
+          loading="lazy"
         />
       </div>
     </div>

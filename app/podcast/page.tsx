@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
@@ -6,9 +7,10 @@ import { CTA } from "@/components/sections/CTA";
 import { Button } from "@/components/ui/Button";
 import { VideoCard } from "@/components/cards/VideoCard";
 import { WebinarCard } from "@/components/cards/WebinarCard";
-import { PodcastCard } from "@/components/cards/PodcastCard";
 import { PodcastFeed } from "@/components/content/PodcastFeed";
-import { episodes, subscribeLinks } from "@/lib/content/podcast";
+import { EpisodeList } from "@/components/podcast/EpisodeList";
+import { EpisodeListSkeleton } from "@/components/podcast/EpisodeListSkeleton";
+import { subscribeLinks } from "@/lib/content/podcast";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { jsonLdScriptProps } from "@/lib/seo/schema";
 import { siteConfig } from "@/lib/data/navigation";
@@ -48,12 +50,16 @@ const recentlyReleased = [
   { category: "New Webinar", title: "Investment Property Analysis Deep Dive", description: "Learn the exact formulas and metrics I use to evaluate investment properties." },
 ];
 
+const playlistId = process.env.YOUTUBE_PLAYLIST_ID;
+
 const podcastSeriesSchema = {
   "@context": "https://schema.org",
   "@type": "PodcastSeries",
   name: "Sugar Spice & Spirits",
   url: `${siteConfig.siteUrl}/podcast`,
-  webFeed: "https://www.youtube.com/feeds/videos.xml?playlist_id=PLOoNpBZdMzvmMTvAZ5woo1_hkC9SEnJ6m",
+  ...(playlistId && {
+    webFeed: `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`,
+  }),
   author: { "@type": "Person", name: siteConfig.name },
 };
 
@@ -89,14 +95,14 @@ export default function PodcastPage() {
       <Section>
         <Container>
           <h2>Sugar Spice &amp; Spirits Podcast</h2>
-          <PodcastFeed />
+          <Suspense fallback={<div className="bg-cream p-lg rounded-sm mb-lg animate-pulse h-[280px] md:h-[400px]" aria-hidden="true" />}>
+            <PodcastFeed />
+          </Suspense>
 
-          <h3 className="mb-lg border-b-2 border-gold pb-md">More Episodes</h3>
-          <div className="grid grid-cols-2 max-md:grid-cols-1 gap-md">
-            {episodes.map((episode) => (
-              <PodcastCard key={episode.slug} title={episode.title} href={`/podcast/${episode.slug}`} />
-            ))}
-          </div>
+          <h3 className="mb-lg border-b-2 border-gold pb-md">All Episodes</h3>
+          <Suspense fallback={<EpisodeListSkeleton />}>
+            <EpisodeList />
+          </Suspense>
 
           <div className="mt-2xl p-lg bg-cream rounded-sm text-center">
             <p className="text-navy font-semibold mb-md">📱 Subscribe &amp; Listen Everywhere</p>
