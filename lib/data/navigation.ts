@@ -147,6 +147,8 @@ export const siteConfig = {
   },
   bookingUrl:
     "https://outlook.office.com/bookwithme/user/f39b29ca72d4472699897db031f61fd7@homerockrealty.com/meetingtype/OLdPZ9Q4HUKXNbgzgjnasg2?anonymous&ismsaljsauthenabled&ep=mlink",
+  /** Natalie's official HAR member profile — the real, MLS-backed source for her current listings. */
+  harProfileUrl: "https://www.har.com/web/nataliepilkinton",
   social: {
     facebook: "https://facebook.com/nataliepilkinton",
     instagram: "https://instagram.com/nataliepilkinton",
