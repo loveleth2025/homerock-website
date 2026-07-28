@@ -1,65 +1,117 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import { Hero } from "@/components/sections/Hero";
+import { Section } from "@/components/ui/Section";
+import { Container } from "@/components/ui/Container";
+import { SectionTitle } from "@/components/ui/SectionTitle";
+import { Stats } from "@/components/sections/Stats";
+import { CTA } from "@/components/sections/CTA";
+import { Button } from "@/components/ui/Button";
+import { SearchBar } from "@/components/forms/SearchBar";
+import { LearningPathCard } from "@/components/cards/LearningPathCard";
+import { ResourceCard } from "@/components/cards/ResourceCard";
+import { homeStats } from "@/lib/data/stats";
+import { buildMetadata } from "@/lib/seo/metadata";
 
-export default function Home() {
+export const metadata: Metadata = buildMetadata({
+  title: "Natalie Pilkinton | Educational Authority for Home Buyers, Sellers & Investors",
+  description:
+    "Learn from a Texas Realtor, investor, and educator who's built wealth through real estate. Get actionable strategies for buying, selling, and investing.",
+  path: "/",
+});
+
+const learningPaths = [
+  {
+    icon: "🏠",
+    title: "Home Buyer Academy",
+    description: "Master the home buying process from pre-approval to closing",
+    href: "/buyers",
+  },
+  {
+    icon: "🔑",
+    title: "Home Seller Academy",
+    description: "Learn how to maximize your sale price and timeline",
+    href: "/sellers",
+  },
+  {
+    icon: "📈",
+    title: "Investor Academy",
+    description: "Build wealth through strategic real estate investments",
+    href: "/investors",
+  },
+  {
+    icon: "🚀",
+    title: "Realtor Growth Academy",
+    description: "Scale your real estate business with proven systems",
+    href: "/realtors",
+  },
+];
+
+const featuredResources = [
+  {
+    category: "Guide",
+    title: "Home Buyer's Checklist",
+    description: "Everything you need to know before making an offer.",
+  },
+  {
+    category: "Article",
+    title: "Improve Your Credit Before Buying",
+    description: "Practical guide to raising your credit score.",
+  },
+  {
+    category: "Webinar",
+    title: "Passive Income Strategies",
+    description: "Build passive income through rental properties.",
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <Hero
+        title="Master the Art of Real Estate"
+        subheading="Learn from a Texas Realtor, investor, and educator who's built wealth through real estate. Get actionable strategies for buying, selling, and investing."
+      >
+        <Button href="/buyers">Start Learning</Button>
+        <Button href="/booking" variant="outline-light">
+          Book Free Strategy Session
+        </Button>
+      </Hero>
+
+      <Section>
+        <Container>
+          <Stats stats={homeStats} />
+        </Container>
+      </Section>
+
+      <Section tone="light">
+        <Container className="text-center">
+          <SectionTitle align="center">What Do You Want to Learn?</SectionTitle>
+          <div className="my-2xl">
+            <SearchBar />
+          </div>
+
+          <div className="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 gap-lg text-left">
+            {learningPaths.map((path) => (
+              <LearningPathCard key={path.href} {...path} />
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <SectionTitle>Featured Resources</SectionTitle>
+          <div className="grid grid-cols-3 max-md:grid-cols-1 gap-lg">
+            {featuredResources.map((resource) => (
+              <ResourceCard key={resource.title} {...resource} />
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <CTA title="Ready to Master Real Estate?" description="Book a free 30-minute strategy session to discuss your real estate goals.">
+        <Button href="/booking">Book Your FREE Strategy Session</Button>
+      </CTA>
+    </>
   );
 }

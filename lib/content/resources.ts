@@ -1,0 +1,37 @@
+export type ResourceItem = {
+  category: string;
+  title: string;
+  description: string;
+};
+
+/**
+ * Every item below is named directly after a card that already exists in the
+ * legacy site (as a "Coming Soon" tool or an unlinked checklist/worksheet
+ * title) — nothing here is invented. None are functional yet.
+ */
+export const guides: ResourceItem[] = [
+  { category: "Guide", title: "Home Buyer's Checklist", description: "Complete checklist of everything you need before making an offer." },
+  { category: "Guide", title: "Pre-Sale Home Checklist", description: "Complete list of repairs and improvements to maximize sale price." },
+];
+
+export const calculators: ResourceItem[] = [
+  { category: "Calculator", title: "Budget Calculator", description: "Calculate your maximum budget based on income and expenses." },
+  { category: "Calculator", title: "ROI Calculator", description: "Calculate your return on investment for potential deals." },
+  { category: "Calculator", title: "Cash Flow Analyzer", description: "Project monthly cash flow for rental properties." },
+];
+
+export const checklists: ResourceItem[] = [
+  { category: "Checklist", title: "Home Buyer's Checklist", description: "Complete checklist of everything you need before making an offer." },
+  { category: "Checklist", title: "Pre-Sale Home Checklist", description: "Complete list of repairs and improvements to maximize sale price." },
+];
+
+export const templates: ResourceItem[] = [
+  { category: "Template", title: "Client Follow-Up System", description: "Email and SMS templates for consistent client communication." },
+  { category: "Worksheet", title: "Business Plan Template", description: "Annual business plan and goal-setting worksheet for realtors." },
+  { category: "Script", title: "Listing Presentation", description: "Complete listing presentation script to win more listings." },
+];
+
+export const downloads: ResourceItem[] = [
+  { category: "Worksheet", title: "Comparative Market Analysis", description: "Analyze comparable homes to determine your home's value." },
+  ...guides,
+];

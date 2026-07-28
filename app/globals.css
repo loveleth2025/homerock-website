@@ -1,26 +1,119 @@
 @import "tailwindcss";
 
+/* ========== DESIGN TOKENS ========== */
+/* Ported 1:1 from the legacy site's :root custom properties. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy: #0a1a33;
+  --cream: #f5f3f0;
+  --white: #ffffff;
+  --ink: #1a1a1a;
+  --gold: #c9a227;
+  --gray-light: #f0ebe7;
+  --gray-medium: #c4bfb9;
+  --gray-dark: #5a5450;
+
+  --shadow-sm: 0 1px 2px rgba(10, 26, 51, 0.05);
+  --shadow-md: 0 4px 6px rgba(10, 26, 51, 0.1);
+  --shadow-lg: 0 10px 15px rgba(10, 26, 51, 0.1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: Georgia, Garamond, serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+
+  --color-navy: var(--navy);
+  --color-cream: var(--cream);
+  --color-white: var(--white);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --color-gray-light: var(--gray-light);
+  --color-gray-medium: var(--gray-medium);
+  --color-gray-dark: var(--gray-dark);
+
+  --shadow-brand-sm: var(--shadow-sm);
+  --shadow-brand-md: var(--shadow-md);
+  --shadow-brand-lg: var(--shadow-lg);
+
+  /* Legacy spacing scale, exposed as p-xs, gap-lg, etc. */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 6rem;
+
+  /* Legacy type scale, overriding Tailwind's defaults to match exactly. */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3rem;
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.5;
+    color: var(--ink);
+    background-color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--navy);
+  }
+
+  h1 { font-size: var(--text-5xl); letter-spacing: -0.02em; }
+  h2 { font-size: var(--text-4xl); letter-spacing: -0.01em; }
+  h3 { font-size: var(--text-3xl); }
+  h4 { font-size: var(--text-2xl); }
+  h5 { font-size: var(--text-xl); }
+  h6 { font-size: var(--text-lg); text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-dark); }
+
+  p { line-height: 1.625; color: var(--gray-dark); }
+
+  a { color: var(--navy); text-decoration: none; transition: color 0.2s ease; }
+  a:hover { color: var(--gold); }
+
+  img { max-width: 100%; height: auto; display: block; }
+}
+
+@media (max-width: 768px) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --text-2xl: 1.375rem;
+    --text-3xl: 1.75rem;
+    --text-4xl: 2rem;
+    --text-5xl: 2.25rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (max-width: 480px) {
+  :root {
+    --spacing-md: 1rem;
+    --spacing-lg: 1.25rem;
+    --spacing-xl: 1.5rem;
+    --spacing-2xl: 2.25rem;
+    --text-lg: 1rem;
+    --text-xl: 1.125rem;
+    --text-2xl: 1.25rem;
+    --text-3xl: 1.5rem;
+    --text-4xl: 1.75rem;
+  }
 }
