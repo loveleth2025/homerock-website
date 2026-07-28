@@ -18,7 +18,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
               {index === trail.length - 1 ? (
                 <span className="text-navy font-medium">{crumb.name}</span>
               ) : (
-                <Link href={crumb.path} className="hover:text-gold">
+                <Link href={crumb.path} className="hover:text-gold-ink">
                   {crumb.name}
                 </Link>
               )}

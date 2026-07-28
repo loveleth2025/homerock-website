@@ -28,7 +28,7 @@ export function Card({ children, featured, className }: CardProps) {
 
 export function CardCategory({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn("text-xs uppercase tracking-[0.1em] text-gold font-semibold mb-xs", className)}>
+    <div className={cn("text-xs uppercase tracking-[0.1em] text-gold-ink font-semibold mb-xs", className)}>
       {children}
     </div>
   );

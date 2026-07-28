@@ -12,7 +12,7 @@ export function Testimonial({ text, author, role, onWhite }: TestimonialType & {
       <div className={cn("text-lg italic leading-relaxed mb-lg", onWhite ? "text-ink" : "text-white")}>
         &ldquo;{text}&rdquo;
       </div>
-      <div className="font-semibold text-gold mb-xs">{author}</div>
+      <div className={cn("font-semibold mb-xs", onWhite ? "text-gold-ink" : "text-gold")}>{author}</div>
       <div className={cn("text-sm", onWhite ? "text-gray-dark" : "text-white/70")}>{role}</div>
     </div>
   );
@@ -20,7 +20,7 @@ export function Testimonial({ text, author, role, onWhite }: TestimonialType & {
 
 export function TestimonialGrid({ items, onWhite }: { items: TestimonialType[]; onWhite?: boolean }) {
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="max-w-[48rem] mx-auto">
       {items.map((item) => (
         <Testimonial key={item.author} {...item} onWhite={onWhite} />
       ))}

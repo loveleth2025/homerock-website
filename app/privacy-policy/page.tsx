@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
       <Hero title="Privacy Policy" subheading={`Effective ${EFFECTIVE_DATE}`} align="left" />
 
       <Section>
-        <Container className="max-w-3xl">
+        <Container className="max-w-[48rem]">
           <Callout title="Template notice">
             <p className="mb-0">
               This is a standard-form privacy policy template for a real estate brokerage website. It has not

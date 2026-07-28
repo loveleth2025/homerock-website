@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PlaceholderNotice } from "@/components/ui/PlaceholderNotice";
 import { ValuationForm } from "@/components/forms/ValuationForm";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -16,11 +16,7 @@ export const metadata: Metadata = buildMetadata({
 export default function HomeValuePage() {
   return (
     <>
-      <div className="bg-cream border-b border-gray-light py-md">
-        <Container>
-          <Breadcrumbs items={[{ name: "Home Sellers", path: "/sellers" }, { name: "Home Value", path: "/sellers/home-value" }]} />
-        </Container>
-      </div>
+      <BreadcrumbBar items={[{ name: "Home Sellers", path: "/sellers" }, { name: "Home Value", path: "/sellers/home-value" }]} />
 
       <Hero title="What's My Home Worth?" subheading="Request a free, no-obligation home value estimate" align="left" />
 

@@ -16,8 +16,8 @@ export function MobileMenuToggle({ active, onClick }: MobileMenuToggleProps) {
       aria-controls="primary-navigation"
       onClick={onClick}
       className={cn(
-        "hidden max-md:flex items-center justify-center bg-transparent border-0 text-2xl leading-none text-navy cursor-pointer p-sm rounded-xs transition-colors hover:text-gold",
-        active && "text-gold",
+        "hidden max-lg:flex items-center justify-center bg-transparent border-0 text-2xl leading-none text-navy cursor-pointer p-sm rounded-xs transition-colors hover:text-gold-ink",
+        active && "text-gold-ink",
       )}
     >
       <span aria-hidden>{active ? "✕" : "☰"}</span>

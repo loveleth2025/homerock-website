@@ -3,6 +3,7 @@ import { AcademyLayout } from "@/layouts/AcademyLayout";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Card, CardTitle, CardCategory, CardDescription } from "@/components/ui/Card";
+import { ComingSoonButton } from "@/components/ui/ComingSoonButton";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -27,18 +28,6 @@ const modules = [
   { category: "Course", title: "Financing Your Investments", description: "Learn about loan types, terms, and strategies for investment properties" },
   { category: "Course", title: "Building Your Portfolio", description: "Strategies for scaling from one property to a diversified portfolio" },
 ];
-
-function ComingSoonButton() {
-  return (
-    <button
-      type="button"
-      disabled
-      className="px-md py-sm text-sm font-semibold border border-navy text-navy rounded-xs opacity-60 cursor-not-allowed"
-    >
-      Coming Soon
-    </button>
-  );
-}
 
 export default function InvestorsPage() {
   return (

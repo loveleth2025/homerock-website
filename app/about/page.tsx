@@ -59,7 +59,7 @@ export default function AboutPage() {
       </Section>
 
       <Section>
-        <Container className="max-w-3xl text-center">
+        <Container className="max-w-[48rem] text-center">
           <h2>Follow &amp; Stay Connected</h2>
           <p className="mb-xl">Join my community for real estate insights, market updates, and educational content</p>
           <div className="flex gap-md justify-center flex-wrap">

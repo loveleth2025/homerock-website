@@ -78,7 +78,7 @@ export default function BookingPage() {
       </Section>
 
       <Section tone="light">
-        <Container className="max-w-3xl">
+        <Container className="max-w-[48rem]">
           <h2 className="text-center">Client Testimonials</h2>
           <TestimonialGrid items={bookingTestimonials} onWhite />
         </Container>

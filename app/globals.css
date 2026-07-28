@@ -8,6 +8,15 @@
   --white: #ffffff;
   --ink: #1a1a1a;
   --gold: #c9a227;
+  /**
+   * A deeper shade of the brand gold, reserved for gold TEXT/icons sitting on
+   * light backgrounds. Brand gold (#c9a227) only contrasts ~2.4:1 against
+   * white/cream — well under WCAG AA's 4.5:1 for text — but reads fine as a
+   * background, border, or on navy. This token is the same hue, darkened
+   * until it clears AA (~5:1), so small gold labels stay legible without
+   * changing the brand color itself.
+   */
+  --gold-ink: #8a6b1f;
   --gray-light: #f0ebe7;
   --gray-medium: #c4bfb9;
   --gray-dark: #5a5450;
@@ -26,6 +35,7 @@
   --color-white: var(--white);
   --color-ink: var(--ink);
   --color-gold: var(--gold);
+  --color-gold-ink: var(--gold-ink);
   --color-gray-light: var(--gray-light);
   --color-gray-medium: var(--gray-medium);
   --color-gray-dark: var(--gray-dark);
@@ -46,6 +56,7 @@
   --spacing-xl: 3rem;
   --spacing-2xl: 4rem;
   --spacing-3xl: 6rem;
+
 
   /* Legacy type scale, overriding Tailwind's defaults to match exactly. */
   --text-xs: 0.75rem;
@@ -79,6 +90,9 @@
     font-weight: 600;
     line-height: 1.25;
     color: var(--navy);
+    /* Distributes words evenly across lines instead of leaving a lone
+       orphan word on the last line — applied sitewide, not per-heading. */
+    text-wrap: balance;
   }
 
   h1 { font-size: var(--text-5xl); letter-spacing: -0.02em; }
@@ -88,10 +102,16 @@
   h5 { font-size: var(--text-xl); }
   h6 { font-size: var(--text-lg); text-transform: uppercase; letter-spacing: 0.05em; color: var(--gray-dark); }
 
-  p { line-height: 1.625; color: var(--gray-dark); }
+  p {
+    line-height: 1.625;
+    color: var(--gray-dark);
+    /* Progressive enhancement (Chromium/Firefox today, ignored elsewhere):
+       avoids a single short/orphan word wrapping onto its own last line. */
+    text-wrap: pretty;
+  }
 
   a { color: var(--navy); text-decoration: none; transition: color 0.2s ease; }
-  a:hover { color: var(--gold); }
+  a:hover { color: var(--gold-ink); }
 
   img { max-width: 100%; height: auto; display: block; }
 

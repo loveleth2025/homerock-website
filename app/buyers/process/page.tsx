@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { Timeline } from "@/components/sections/Timeline";
 import { CTA } from "@/components/sections/CTA";
 import { Button } from "@/components/ui/Button";
@@ -18,16 +18,12 @@ export const metadata: Metadata = buildMetadata({
 export default function BuyerProcessPage() {
   return (
     <>
-      <div className="bg-cream border-b border-gray-light py-md">
-        <Container>
-          <Breadcrumbs items={[{ name: "Home Buyers", path: "/buyers" }, { name: "Home Buying Process", path: "/buyers/process" }]} />
-        </Container>
-      </div>
+      <BreadcrumbBar items={[{ name: "Home Buyers", path: "/buyers" }, { name: "Home Buying Process", path: "/buyers/process" }]} />
 
       <Hero title="The Home Buying Process" subheading="Six steps from pre-approval to the day you get your keys" align="left" />
 
       <Section>
-        <Container className="max-w-3xl">
+        <Container className="max-w-[48rem]">
           <Timeline steps={buyerJourney} />
         </Container>
       </Section>

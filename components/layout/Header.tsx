@@ -39,7 +39,7 @@ export function Header() {
 
   useEffect(() => {
     function handleResize() {
-      if (window.innerWidth > 768) closeAll();
+      if (window.innerWidth > 1024) closeAll();
     }
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -61,13 +61,13 @@ export function Header() {
         ref={navRef}
         className="max-w-[80rem] mx-auto px-lg py-lg flex justify-between items-center gap-md max-md:px-md max-md:py-md max-sm:flex-wrap max-sm:p-sm"
       >
-        <Link href="/" onClick={closeAll} className="shrink-0">
+        <Link href="/" onClick={closeAll} className="shrink-0 inline-flex items-center py-1.5 -my-1.5">
           <Image
             src={siteConfig.logoUrl}
             alt={siteConfig.logoAlt}
             width={160}
-            height={40}
-            className="h-10 w-auto max-md:h-8 cursor-pointer transition-transform duration-300 hover:scale-105"
+            height={160}
+            className="h-10 w-10 max-md:h-8 max-md:w-8 cursor-pointer transition-transform duration-300 hover:scale-105"
             priority
           />
         </Link>

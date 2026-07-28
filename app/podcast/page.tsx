@@ -102,7 +102,7 @@ export default function PodcastPage() {
             <p className="text-navy font-semibold mb-md">📱 Subscribe &amp; Listen Everywhere</p>
             <div className="flex gap-md justify-center flex-wrap">
               {subscribeLinks.map((link) => (
-                <a key={link.label} href={link.href} className="text-gold font-semibold text-sm">
+                <a key={link.label} href={link.href} className="text-gold-ink font-semibold text-sm">
                   {link.label}
                 </a>
               ))}

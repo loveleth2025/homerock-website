@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Container } from "@/components/ui/Container";
-import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { ListingDetail } from "@/components/listings/ListingDetail";
 import { getListingBySlug, getListingSlugs } from "@/lib/listings";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -38,16 +37,12 @@ export default async function ListingDetailPage({ params }: { params: Promise<{ 
     <>
       <script {...jsonLdScriptProps(listingSchema(listing))} />
 
-      <div className="bg-cream border-b border-gray-light py-md">
-        <Container>
-          <Breadcrumbs
-            items={[
-              { name: "Featured Listings", path: "/listings" },
-              { name: `${listing.address.street}, ${listing.address.city}`, path: `/listings/${listing.slug}` },
-            ]}
-          />
-        </Container>
-      </div>
+      <BreadcrumbBar
+        items={[
+          { name: "Featured Listings", path: "/listings" },
+          { name: `${listing.address.street}, ${listing.address.city}`, path: `/listings/${listing.slug}` },
+        ]}
+      />
 
       <ListingDetail listing={listing} />
     </>

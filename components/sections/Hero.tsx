@@ -100,7 +100,7 @@ export function Hero({ title, subheading, eyebrow, children, align = "centered",
               variants={item}
               className={cn(
                 "text-pretty text-xl font-normal leading-relaxed opacity-95 text-cream max-md:text-lg",
-                align === "centered" ? "max-w-2xl mx-auto mb-2xl" : "max-w-2xl mb-2xl",
+                align === "centered" ? "max-w-[42rem] mx-auto mb-2xl" : "max-w-[42rem] mb-2xl",
               )}
             >
               {subheading}

@@ -19,18 +19,18 @@ export function Footer() {
                 src={siteConfig.logoUrl}
                 alt={siteConfig.logoAlt}
                 width={140}
-                height={35}
-                className="h-8 w-auto"
+                height={140}
+                className="h-8 w-8"
               />
             </Link>
-            <p className="text-cream/80 text-sm max-w-sm mb-lg">
+            <p className="text-cream/80 text-sm max-w-[24rem] mb-lg">
               Texas Realtor, real estate investor, and educator helping buyers, sellers, investors, and
               agents build real estate wealth with confidence.
             </p>
             <SocialIcons className="flex gap-sm" />
           </div>
 
-          <div className="lg:justify-self-end w-full max-w-sm">
+          <div className="lg:justify-self-end w-full max-w-[24rem]">
             <h4 className="text-white mb-sm">Stay in the Loop</h4>
             <p className="text-cream/70 text-sm mb-md">
               Market updates and real estate education, straight to your inbox.

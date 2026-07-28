@@ -30,8 +30,9 @@ export function ListingDetail({ listing }: { listing: Listing }) {
 
       <Section>
         <Container>
-          <div className="grid grid-cols-[1.6fr_1fr] max-lg:grid-cols-1 gap-3xl items-start">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-3xl items-start">
+            {/* Price/status/facts always come first, on every breakpoint. */}
+            <div className="lg:col-start-1 lg:row-start-1">
               <div className="flex items-center gap-md mb-sm flex-wrap">
                 <span
                   className={`px-sm py-1 rounded-xs text-xs font-semibold uppercase tracking-[0.06em] ${statusClasses[listing.status]}`}
@@ -52,10 +53,29 @@ export function ListingDetail({ listing }: { listing: Listing }) {
                 {listing.address.state} {listing.address.zip}
               </p>
 
-              <div className="mb-2xl pb-lg border-b border-gray-light">
+              <div className="pb-lg border-b border-gray-light">
                 <PropertyFacts beds={listing.beds} baths={listing.baths} sqft={listing.sqft} size="lg" />
               </div>
+            </div>
 
+            {/* On mobile the CTA sits right under the price, not buried below the
+                full description — on desktop it becomes the sticky right rail. */}
+            <div className="lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:sticky lg:top-24">
+              <div className="border border-gray-light rounded-xs p-lg">
+                <h3 className="mt-0 mb-md text-xl">Interested in This Home?</h3>
+                <p className="text-sm mb-lg">
+                  Schedule a private showing or ask Natalie a question about this property.
+                </p>
+                <Button href="/booking" className="w-full mb-md">
+                  Schedule a Showing
+                </Button>
+                <Button href={listing.harMlsUrl} external variant="outline" className="w-full">
+                  View Official HAR MLS Listing
+                </Button>
+              </div>
+            </div>
+
+            <div className="lg:col-start-1 lg:row-start-2">
               <h2>Property Description</h2>
               {listing.description.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
@@ -72,21 +92,6 @@ export function ListingDetail({ listing }: { listing: Listing }) {
               ))}
 
               <MortgageCalculatorPlaceholder price={listing.price} />
-            </div>
-
-            <div className="lg:sticky lg:top-24 flex flex-col gap-lg">
-              <div className="border border-gray-light rounded-xs p-lg">
-                <h3 className="mt-0 mb-md text-xl">Interested in This Home?</h3>
-                <p className="text-sm mb-lg">
-                  Schedule a private showing or ask Natalie a question about this property.
-                </p>
-                <Button href="/booking" className="w-full mb-md">
-                  Schedule a Showing
-                </Button>
-                <Button href={listing.harMlsUrl} external variant="outline" className="w-full">
-                  View Official HAR MLS Listing
-                </Button>
-              </div>
             </div>
           </div>
         </Container>

@@ -21,7 +21,7 @@ export function FAQ({ items }: { items: FAQEntry[] }) {
           <div key={item.question} className="border-b border-gray-light py-lg last:border-b-0">
             <button
               type="button"
-              className="flex w-full justify-between items-center gap-md cursor-pointer font-semibold text-navy py-md bg-transparent border-0 text-left hover:text-gold transition-colors"
+              className="flex w-full justify-between items-center gap-md cursor-pointer font-semibold text-navy py-md bg-transparent border-0 text-left hover:text-gold-ink transition-colors"
               onClick={() => setOpenIndex(isOpen ? null : index)}
             >
               {item.question}

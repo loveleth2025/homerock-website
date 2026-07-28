@@ -16,7 +16,7 @@ export default function TermsOfServicePage() {
     <>
       <Hero title="Terms of Service" align="left" />
       <Section>
-        <Container className="max-w-3xl">
+        <Container className="max-w-[48rem]">
           <PlaceholderNotice note="Legal copy must be supplied or reviewed by counsel before publishing." />
         </Container>
       </Section>

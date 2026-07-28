@@ -13,7 +13,7 @@ export function CTA({ title, description, children }: CTAProps) {
   return (
     <Section tone="accent">
       <Container>
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-[48rem] mx-auto">
           <h2 className="text-white">{title}</h2>
           {description && (
             <p className="text-cream text-lg mb-xl">{description}</p>

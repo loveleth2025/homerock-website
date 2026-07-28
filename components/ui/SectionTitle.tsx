@@ -12,7 +12,7 @@ export function SectionTitle({ eyebrow, children, align = "left", className }: S
   return (
     <div className={cn(align === "center" && "text-center", className)}>
       {eyebrow && (
-        <div className="text-xs uppercase tracking-[0.1em] text-gold font-semibold mb-sm">
+        <div className="text-xs uppercase tracking-[0.1em] text-gold-ink font-semibold mb-sm">
           {eyebrow}
         </div>
       )}

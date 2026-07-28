@@ -3,7 +3,8 @@ import { AcademyLayout } from "@/layouts/AcademyLayout";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Timeline } from "@/components/sections/Timeline";
-import { Card, CardTitle } from "@/components/ui/Card";
+import { Card, CardTitle, CardDescription } from "@/components/ui/Card";
+import { ComingSoonButton } from "@/components/ui/ComingSoonButton";
 import { ResourceCard } from "@/components/cards/ResourceCard";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { sellerJourney } from "@/lib/content/sellers";
@@ -50,14 +51,8 @@ export default function SellersPage() {
                 <CardTitle>
                   {module.icon} {module.title}
                 </CardTitle>
-                <p>{module.description}</p>
-                <button
-                  type="button"
-                  disabled
-                  className="px-md py-sm text-sm font-semibold border border-navy text-navy rounded-xs opacity-60 cursor-not-allowed"
-                >
-                  Coming Soon
-                </button>
+                <CardDescription>{module.description}</CardDescription>
+                <ComingSoonButton />
               </Card>
             ))}
           </div>

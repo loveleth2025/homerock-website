@@ -51,7 +51,7 @@ export function ListingCard({ listing }: { listing: Listing }) {
 
         <p className="text-sm leading-relaxed text-gray-dark mb-md flex-1">{listing.shortDescription}</p>
 
-        <span className="inline-flex items-center gap-xs text-sm font-semibold text-navy group-hover:text-gold transition-colors">
+        <span className="inline-flex items-center gap-xs text-sm font-semibold text-navy group-hover:text-gold-ink transition-colors">
           View Details
           <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
             →

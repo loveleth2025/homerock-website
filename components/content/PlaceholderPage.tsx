@@ -1,7 +1,8 @@
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Breadcrumbs, type Crumb } from "@/components/layout/Breadcrumbs";
+import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
+import { type Crumb } from "@/components/layout/Breadcrumbs";
 import { PlaceholderNotice } from "@/components/ui/PlaceholderNotice";
 import { CTA } from "@/components/sections/CTA";
 import { Button } from "@/components/ui/Button";
@@ -32,16 +33,12 @@ export function PlaceholderPage({
 }: PlaceholderPageProps) {
   return (
     <>
-      <div className="bg-cream border-b border-gray-light py-md">
-        <Container>
-          <Breadcrumbs items={breadcrumbs} />
-        </Container>
-      </div>
+      <BreadcrumbBar items={breadcrumbs} />
 
       <Hero title={title} subheading={subheading} align="left" />
 
       <Section>
-        <Container className="max-w-3xl">
+        <Container className="max-w-[48rem]">
           <PlaceholderNotice />
         </Container>
       </Section>

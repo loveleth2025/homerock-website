@@ -17,7 +17,7 @@ export function WebinarCard({ status, title, description, schedule, cta }: Webin
       </CardCategory>
       <CardTitle>{title}</CardTitle>
       <CardDescription>{description}</CardDescription>
-      <p className="text-sm text-gold font-semibold mb-md">{schedule}</p>
+      <p className="text-sm text-gold-ink font-semibold mb-md">{schedule}</p>
       <Button href={cta.href}>{cta.label}</Button>
     </Card>
   );

@@ -25,9 +25,9 @@ export function Navigation({ mobileOpen, openSubmenu, onToggleSubmenu, onNavigat
     <ul
       id="primary-navigation"
       className={cn(
-        "hidden md:flex gap-lg list-none items-center",
+        "hidden lg:flex gap-lg list-none items-center",
         mobileOpen &&
-          "max-md:flex max-md:flex-col max-md:fixed max-md:top-[60px] max-md:left-0 max-md:right-0 max-md:bg-white max-md:border-b max-md:border-gray-light max-md:p-lg max-md:gap-xs max-md:z-[999] max-md:shadow-brand-md max-md:max-h-[calc(100vh-60px)] max-md:overflow-y-auto max-md:animate-[fade-in_0.15s_ease-out]",
+          "max-lg:flex max-lg:flex-col max-lg:fixed max-lg:top-[60px] max-lg:left-0 max-lg:right-0 max-lg:bg-white max-lg:border-b max-lg:border-gray-light max-lg:p-lg max-lg:gap-xs max-lg:z-[999] max-lg:shadow-brand-md max-lg:max-h-[calc(100vh-60px)] max-lg:overflow-y-auto max-lg:animate-[fade-in_0.15s_ease-out]",
       )}
     >
       {primaryNav.map((item: NavItem) => {
@@ -37,7 +37,7 @@ export function Navigation({ mobileOpen, openSubmenu, onToggleSubmenu, onNavigat
         return (
           <li
             key={item.href}
-            className="relative group max-md:w-full max-md:border-b max-md:border-gray-light max-md:last:border-b-0"
+            className="relative group max-lg:w-full max-lg:border-b max-lg:border-gray-light max-lg:last:border-b-0"
           >
             {item.children ? (
               <>
@@ -46,8 +46,8 @@ export function Navigation({ mobileOpen, openSubmenu, onToggleSubmenu, onNavigat
                   aria-haspopup="true"
                   aria-expanded={open}
                   className={cn(
-                    "flex w-full items-center justify-between gap-xs text-sm font-medium py-md md:py-2 transition-colors cursor-pointer bg-transparent border-0",
-                    active ? "text-navy font-semibold" : "text-navy/90 hover:text-gold",
+                    "flex w-full items-center justify-between gap-xs text-sm font-medium py-md lg:py-2 transition-colors cursor-pointer bg-transparent border-0",
+                    active ? "text-navy font-semibold" : "text-navy/90 hover:text-gold-ink",
                   )}
                   onClick={() => onToggleSubmenu(item.href)}
                 >
@@ -56,7 +56,7 @@ export function Navigation({ mobileOpen, openSubmenu, onToggleSubmenu, onNavigat
                     aria-hidden
                     className={cn(
                       "text-xs transition-transform duration-200",
-                      "md:group-hover:rotate-180 md:group-focus-within:rotate-180",
+                      "lg:group-hover:rotate-180 lg:group-focus-within:rotate-180",
                       open && "rotate-180",
                     )}
                   >
@@ -65,19 +65,19 @@ export function Navigation({ mobileOpen, openSubmenu, onToggleSubmenu, onNavigat
                 </button>
                 <ul
                   className={cn(
-                    "md:absolute md:top-full md:left-0 md:mt-xs md:min-w-[240px] md:bg-white md:border md:border-gray-light md:shadow-brand-lg md:rounded-xs md:py-sm",
-                    "md:opacity-0 md:invisible md:-translate-y-1",
-                    "md:group-hover:opacity-100 md:group-hover:visible md:group-hover:translate-y-0",
-                    "md:group-focus-within:opacity-100 md:group-focus-within:visible md:group-focus-within:translate-y-0",
-                    "md:transition-all md:duration-150 md:ease-out",
-                    "max-md:pl-md max-md:pb-sm list-none",
-                    open ? "max-md:block md:opacity-100 md:visible md:translate-y-0" : "max-md:hidden",
+                    "lg:absolute lg:top-full lg:left-0 lg:mt-xs lg:min-w-[240px] lg:bg-white lg:border lg:border-gray-light lg:shadow-brand-lg lg:rounded-xs lg:py-sm",
+                    "lg:opacity-0 lg:invisible lg:-translate-y-1",
+                    "lg:group-hover:opacity-100 lg:group-hover:visible lg:group-hover:translate-y-0",
+                    "lg:group-focus-within:opacity-100 lg:group-focus-within:visible lg:group-focus-within:translate-y-0",
+                    "lg:transition-all lg:duration-150 lg:ease-out",
+                    "max-lg:pl-md max-lg:pb-sm list-none",
+                    open ? "max-lg:block lg:opacity-100 lg:visible lg:translate-y-0" : "max-lg:hidden",
                   )}
                 >
-                  <li className="max-md:hidden md:block">
+                  <li className="max-lg:hidden lg:block">
                     <Link
                       href={item.href}
-                      className="block px-md py-sm text-sm text-navy hover:text-gold hover:bg-cream transition-colors font-semibold border-b border-gray-light mb-xs"
+                      className="block px-md py-sm text-sm text-navy hover:text-gold-ink hover:bg-cream transition-colors font-semibold border-b border-gray-light mb-xs"
                       onClick={onNavigate}
                     >
                       {item.label} Overview
@@ -91,8 +91,8 @@ export function Navigation({ mobileOpen, openSubmenu, onToggleSubmenu, onNavigat
                         className={cn(
                           "block px-md py-sm text-sm transition-colors",
                           pathname === child.href
-                            ? "text-gold font-semibold bg-cream"
-                            : "text-navy hover:text-gold hover:bg-cream",
+                            ? "text-gold-ink font-semibold bg-cream"
+                            : "text-navy hover:text-gold-ink hover:bg-cream",
                         )}
                         onClick={onNavigate}
                       >
@@ -107,9 +107,9 @@ export function Navigation({ mobileOpen, openSubmenu, onToggleSubmenu, onNavigat
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "block text-sm font-medium py-md md:py-2 transition-colors relative",
-                  "after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-gold after:transition-[width] after:duration-200",
-                  active ? "text-navy font-semibold after:w-full" : "text-navy/90 hover:text-gold after:w-0 hover:after:w-full",
+                  "block text-sm font-medium py-md lg:py-2 transition-colors relative",
+                  "after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-gold-ink after:transition-[width] after:duration-200",
+                  active ? "text-navy font-semibold after:w-full" : "text-navy/90 hover:text-gold-ink after:w-0 hover:after:w-full",
                 )}
                 onClick={onNavigate}
               >

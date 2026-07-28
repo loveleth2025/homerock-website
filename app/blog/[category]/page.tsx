@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PlaceholderNotice } from "@/components/ui/PlaceholderNotice";
 import { blogArticles, blogCategories, categoryLabels, type BlogCategory } from "@/lib/content/blog";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -34,11 +34,7 @@ export default async function BlogCategoryPage({ params }: { params: Promise<{ c
 
   return (
     <>
-      <div className="bg-cream border-b border-gray-light py-md">
-        <Container>
-          <Breadcrumbs items={[{ name: "Blog", path: "/blog" }, { name: categoryLabels[category], path: `/blog/${category}` }]} />
-        </Container>
-      </div>
+      <BreadcrumbBar items={[{ name: "Blog", path: "/blog" }, { name: categoryLabels[category], path: `/blog/${category}` }]} />
 
       <Hero title={categoryLabels[category]} subheading={`${categoryLabels[category]} articles and guides`} align="left" />
 

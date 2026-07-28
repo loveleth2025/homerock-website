@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
+import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { PlaceholderNotice } from "@/components/ui/PlaceholderNotice";
 import { CTA } from "@/components/sections/CTA";
 import { Button } from "@/components/ui/Button";
@@ -36,16 +36,12 @@ export default async function EpisodePage({ params }: { params: Promise<{ episod
 
   return (
     <>
-      <div className="bg-cream border-b border-gray-light py-md">
-        <Container>
-          <Breadcrumbs items={[{ name: "Podcast", path: "/podcast" }, { name: episode.title, path: `/podcast/${episode.slug}` }]} />
-        </Container>
-      </div>
+      <BreadcrumbBar items={[{ name: "Podcast", path: "/podcast" }, { name: episode.title, path: `/podcast/${episode.slug}` }]} />
 
       <Hero title={episode.title} subheading="Sugar Spice & Spirits with Natalie Pilkinton" align="left" />
 
       <Section>
-        <Container className="max-w-3xl">
+        <Container className="max-w-[48rem]">
           <PlaceholderNotice note="Episode audio/video embed and show notes are pending." />
         </Container>
       </Section>

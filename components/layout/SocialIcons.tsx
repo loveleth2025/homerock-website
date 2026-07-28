@@ -33,7 +33,7 @@ export function SocialIcons({ className }: { className?: string }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${siteConfig.name} on ${icon.label} (opens in a new tab)`}
-          className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-white/20 text-cream hover:bg-gold hover:text-navy hover:border-gold transition-colors"
+          className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/20 text-cream hover:bg-gold hover:text-navy hover:border-gold transition-colors"
         >
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
             <path d={icon.path} />

@@ -31,7 +31,7 @@ export function Newsletter({ className, onDark = true }: NewsletterProps) {
       <label htmlFor={inputId} className="sr-only">
         Email address
       </label>
-      <div className="flex gap-sm max-w-md max-sm:flex-col">
+      <div className="flex gap-sm max-w-[28rem] max-sm:flex-col">
         <input
           id={inputId}
           type="email"
@@ -39,11 +39,11 @@ export function Newsletter({ className, onDark = true }: NewsletterProps) {
           placeholder="Your email address"
           className={
             onDark
-              ? "flex-1 min-w-0 px-md py-sm rounded-xs bg-white/10 border border-white/25 text-white placeholder:text-cream/60 text-sm focus:outline-none focus:border-gold"
-              : "flex-1 min-w-0 px-md py-sm rounded-xs border border-gray-light text-sm focus:outline-none focus:border-gold"
+              ? "flex-1 min-w-0 w-full max-sm:w-full px-md py-sm rounded-xs bg-white/10 border border-white/25 text-white placeholder:text-cream/60 text-sm focus:outline-none focus:border-gold"
+              : "flex-1 min-w-0 w-full max-sm:w-full px-md py-sm rounded-xs border border-gray-light text-sm focus:outline-none focus:border-gold"
           }
         />
-        <Button type="submit" size="small" variant={onDark ? "outline-light" : "primary"}>
+        <Button type="submit" size="small" variant={onDark ? "outline-light" : "primary"} className="max-sm:w-full">
           Subscribe
         </Button>
       </div>
