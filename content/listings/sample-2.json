@@ -1,0 +1,34 @@
+{
+  "slug": "sample-listing-2",
+  "status": "Active",
+  "featured": true,
+  "price": 289900,
+  "address": {
+    "street": "SAMPLE — 000 Demo Court",
+    "city": "Katy",
+    "state": "TX",
+    "zip": "77494"
+  },
+  "beds": 3,
+  "baths": 2,
+  "sqft": 1840,
+  "yearBuilt": 2009,
+  "lotSizeSqft": 6200,
+  "mlsNumber": "SAMPLE-0002",
+  "shortDescription": "SAMPLE DATA — placeholder listing used to demonstrate the Featured Listings system. Replace with a real MLS-synced listing.",
+  "description": [
+    "SAMPLE DATA. This is a placeholder listing used only to demonstrate the Listing Card and Listing Detail template — it is not a real property for sale.",
+    "When this site is connected to a real IDX/MLS feed, records like this one will be generated automatically from that feed instead of hand-written."
+  ],
+  "neighborhoodOverview": [
+    "SAMPLE DATA. Real neighborhood context (schools, commute, nearby amenities) should be supplied per listing once real data is available."
+  ],
+  "buyerProfile": [
+    "SAMPLE DATA. A short paragraph describing the kind of buyer this home suits (e.g. growing families, first-time buyers, investors) should go here."
+  ],
+  "images": [
+    { "url": "/listings/placeholder-exterior.svg", "alt": "Sample placeholder exterior photo" },
+    { "url": "/listings/placeholder-interior.svg", "alt": "Sample placeholder interior photo" }
+  ],
+  "harMlsUrl": "https://www.har.com/"
+}

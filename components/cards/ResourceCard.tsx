@@ -18,7 +18,7 @@ export function ResourceCard({ category, title, description, featured = true, ct
       {cta && (
         <Link
           href={cta.href}
-          className="inline-block px-md py-sm text-sm font-semibold border border-navy text-navy rounded-[2px] hover:bg-navy hover:text-white transition-colors"
+          className="inline-block px-md py-sm text-sm font-semibold border border-navy text-navy rounded-xs hover:bg-navy hover:text-white transition-colors"
         >
           {cta.label}
         </Link>

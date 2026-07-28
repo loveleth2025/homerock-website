@@ -12,7 +12,7 @@ export type WebinarCardProps = {
 export function WebinarCard({ status, title, description, schedule, cta }: WebinarCardProps) {
   return (
     <Card>
-      <CardCategory className="bg-gold text-navy inline-block px-sm py-1 rounded-[2px] normal-case tracking-normal">
+      <CardCategory className="bg-gold text-navy inline-block px-sm py-1 rounded-xs normal-case tracking-normal">
         {status}
       </CardCategory>
       <CardTitle>{title}</CardTitle>

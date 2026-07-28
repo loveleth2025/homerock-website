@@ -36,7 +36,7 @@ export default function ResourcesPage() {
               <Link
                 key={category.href}
                 href={category.href}
-                className="bg-cream p-lg rounded-[2px] text-center transition-all hover:bg-navy hover:text-white group"
+                className="bg-cream p-lg rounded-xs text-center transition-all hover:bg-navy hover:text-white group"
               >
                 <div className="text-3xl mb-md">{category.icon}</div>
                 <h4 className="text-navy group-hover:text-gold mb-0">{category.label}</h4>

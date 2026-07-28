@@ -5,7 +5,7 @@ export function Testimonial({ text, author, role, onWhite }: TestimonialType & {
   return (
     <div
       className={cn(
-        "bg-navy text-white p-xl mb-lg rounded-[2px] border-l-4 border-gold",
+        "bg-navy text-white p-xl mb-lg rounded-xs border-l-4 border-gold",
         onWhite && "bg-white text-ink border border-gray-light border-l-4 border-l-gold",
       )}
     >

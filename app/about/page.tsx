@@ -38,8 +38,8 @@ export default function AboutPage() {
               alt="Natalie Pilkinton Professional Headshot"
               width={640}
               height={640}
-              className="w-full h-auto rounded-[4px]"
-              unoptimized
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="w-full h-auto rounded-sm"
             />
             <div>
               <h2>My Story</h2>

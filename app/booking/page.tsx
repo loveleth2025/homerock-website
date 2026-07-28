@@ -49,12 +49,12 @@ export default function BookingPage() {
 
             <div>
               <h2>Schedule Your Session</h2>
-              <div className="bg-white border border-gray-light rounded-[2px] p-lg">
+              <div className="bg-white border border-gray-light rounded-xs p-lg">
                 <p className="mb-lg">
                   Choose your preferred date and time. Sessions are conducted via Zoom or phone.
                 </p>
 
-                <div className="bg-gradient-to-br from-navy to-[#1a2d4a] rounded-[2px] p-xl mb-lg text-center">
+                <div className="bg-gradient-to-br from-navy to-[#1a2d4a] rounded-xs p-xl mb-lg text-center">
                   <p className="text-white mb-lg text-lg font-medium">
                     Book Your Free 30-Minute Strategy Session
                   </p>
@@ -62,7 +62,7 @@ export default function BookingPage() {
                     href={siteConfig.bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-lg py-md rounded-[2px] font-semibold bg-navy text-white hover:bg-gold hover:text-navy transition-all"
+                    className="inline-block px-lg py-md rounded-xs font-semibold bg-navy text-white hover:bg-gold hover:text-navy transition-all"
                   >
                     Open Calendar &amp; Book Now →
                   </a>

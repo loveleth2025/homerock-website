@@ -98,7 +98,7 @@ export default function PodcastPage() {
             ))}
           </div>
 
-          <div className="mt-2xl p-lg bg-cream rounded-[4px] text-center">
+          <div className="mt-2xl p-lg bg-cream rounded-sm text-center">
             <p className="text-navy font-semibold mb-md">📱 Subscribe &amp; Listen Everywhere</p>
             <div className="flex gap-md justify-center flex-wrap">
               {subscribeLinks.map((link) => (

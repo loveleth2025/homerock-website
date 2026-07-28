@@ -17,12 +17,18 @@ export function buildMetadata({ title, description, path, image }: PageMetadataI
     title,
     description,
     alternates: { canonical: url },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true },
+    },
     openGraph: {
       title,
       description,
       url,
       siteName: `${siteConfig.name} | ${siteConfig.brand}`,
-      images: [{ url: ogImage }],
+      images: [{ url: ogImage, alt: `${siteConfig.name} — ${siteConfig.brand}` }],
+      locale: "en_US",
       type: "website",
     },
     twitter: {

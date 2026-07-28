@@ -54,7 +54,7 @@ export default function BuyersPage() {
                 <button
                   type="button"
                   disabled
-                  className="px-md py-sm text-sm font-semibold border border-navy text-navy rounded-[2px] opacity-60 cursor-not-allowed"
+                  className="px-md py-sm text-sm font-semibold border border-navy text-navy rounded-xs opacity-60 cursor-not-allowed"
                 >
                   Coming Soon
                 </button>

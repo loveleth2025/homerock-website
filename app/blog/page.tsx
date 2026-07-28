@@ -30,7 +30,7 @@ export default function BlogPage() {
               <Link
                 key={category}
                 href={`/blog/${category}`}
-                className="px-md py-sm text-sm font-semibold border border-navy text-navy rounded-[2px] hover:bg-navy hover:text-white transition-colors"
+                className="px-md py-sm text-sm font-semibold border border-navy text-navy rounded-xs hover:bg-navy hover:text-white transition-colors"
               >
                 {categoryLabels[category]}
               </Link>

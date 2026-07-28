@@ -1,4 +1,5 @@
 import { siteConfig } from "@/lib/data/navigation";
+import type { Listing } from "@/lib/listings/types";
 
 /** JSON-LD builders. Render via <script type="application/ld+json"> in each page. */
 
@@ -36,6 +37,24 @@ export function localBusinessSchema() {
       siteConfig.social.linkedin,
       siteConfig.social.youtube,
     ],
+  };
+}
+
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: `${siteConfig.name} | ${siteConfig.brand}`,
+    url: siteConfig.siteUrl,
+    // Matches the real client-side search on /blog (SearchBar submits ?q=) — not aspirational.
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteConfig.siteUrl}/blog?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
   };
 }
 
@@ -84,6 +103,37 @@ export function articleSchema(input: {
       "@type": "Organization",
       name: siteConfig.brand,
     },
+  };
+}
+
+/**
+ * Product+Offer is the most widely-recognized schema.org pattern for a
+ * priced, physical item — there's no dedicated "listing" type in the
+ * schema.org vocabulary, so this mirrors what most real estate sites use.
+ */
+export function listingSchema(listing: Listing) {
+  const { address } = listing;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${address.street}, ${address.city}, ${address.state}`,
+    description: listing.shortDescription,
+    image: listing.images.map((image) => `${siteConfig.siteUrl}${image.url}`),
+    offers: {
+      "@type": "Offer",
+      price: listing.price,
+      priceCurrency: "USD",
+      availability:
+        listing.status === "Active"
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
+      url: listing.harMlsUrl,
+    },
+    additionalProperty: [
+      { "@type": "PropertyValue", name: "Bedrooms", value: listing.beds },
+      { "@type": "PropertyValue", name: "Bathrooms", value: listing.baths },
+      { "@type": "PropertyValue", name: "Square Footage", value: listing.sqft },
+    ],
   };
 }
 

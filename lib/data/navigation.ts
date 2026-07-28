@@ -61,6 +61,10 @@ export const primaryNav: NavItem[] = [
     ],
   },
   {
+    label: "Listings",
+    href: "/listings",
+  },
+  {
     label: "Podcast",
     href: "/podcast",
   },
@@ -91,6 +95,7 @@ export const footerNav = {
       { label: "Home Sellers", href: "/sellers" },
       { label: "Investors", href: "/investors" },
       { label: "Realtors", href: "/realtors" },
+      { label: "Featured Listings", href: "/listings" },
     ] as NavChild[],
   },
   resources: {

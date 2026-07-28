@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/data/navigation";
 import { episodes } from "@/lib/content/podcast";
 import { blogCategories, blogArticles } from "@/lib/content/blog";
 import { marketUpdates } from "@/lib/content/market-updates";
+import { getListingSlugs } from "@/lib/listings";
 
 const staticPaths = [
   "/",
@@ -55,6 +56,8 @@ const staticPaths = [
   "/resources/templates",
 
   "/blog",
+
+  "/listings",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -63,6 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogCategories.map((category) => `/blog/${category}`),
     ...blogArticles.map((article) => `/blog/${article.category}/${article.slug}`),
     ...marketUpdates.map((update) => `/market-updates/${update.slug}`),
+    ...getListingSlugs().map((slug) => `/listings/${slug}`),
   ];
 
   return [...staticPaths, ...dynamicPaths].map((path) => ({
