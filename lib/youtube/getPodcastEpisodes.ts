@@ -76,8 +76,11 @@ async function fetchAllPlaylistItems(apiKey: string, playlistId: string) {
  * the next cache revalidation with no code changes.
  */
 export const getPodcastEpisodes = cache(async (): Promise<YouTubePlaylistResult> => {
-  const apiKey = process.env.YOUTUBE_API_KEY;
-  const playlistId = process.env.YOUTUBE_PLAYLIST_ID;
+  // Trimmed defensively — a stray trailing space/newline from copy-pasting
+  // into a dashboard's env var field is a common, hard-to-spot source of
+  // "Invalid Value" errors from Google's API.
+  const apiKey = process.env.YOUTUBE_API_KEY?.trim();
+  const playlistId = process.env.YOUTUBE_PLAYLIST_ID?.trim();
 
   if (!apiKey || !playlistId) {
     return { status: "not_configured" };
