@@ -1,5 +1,5 @@
 import { getPodcastEpisodes } from "@/lib/youtube/getPodcastEpisodes";
-import { EpisodeRow } from "@/components/podcast/EpisodeRow";
+import { EpisodeListView } from "@/components/podcast/EpisodeListView";
 import { EpisodeListEmpty } from "@/components/podcast/EpisodeListEmpty";
 import { EpisodeListError } from "@/components/podcast/EpisodeListError";
 
@@ -26,11 +26,5 @@ export async function EpisodeList() {
     return <EpisodeListEmpty />;
   }
 
-  return (
-    <ul className="grid grid-cols-2 max-md:grid-cols-1 gap-md">
-      {result.episodes.map((episode) => (
-        <EpisodeRow key={episode.videoId} episode={episode} />
-      ))}
-    </ul>
-  );
+  return <EpisodeListView episodes={result.episodes} />;
 }

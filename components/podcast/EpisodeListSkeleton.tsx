@@ -1,4 +1,6 @@
-const SKELETON_ROW_COUNT = 6;
+// Matches EpisodeListView's INITIAL_VISIBLE_COUNT so the loading skeleton
+// is the same height as the collapsed list it's standing in for.
+const SKELETON_ROW_COUNT = 8;
 
 /**
  * Suspense fallback for <EpisodeList>. Mirrors the real row's dimensions so
