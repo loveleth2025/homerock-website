@@ -6,8 +6,11 @@ export type ResourceCardProps = {
   title: string;
   description: string;
   featured?: boolean;
-  cta?: { label: string; href: string };
+  cta?: { label: string; href: string; external?: boolean };
 };
+
+const ctaClassName =
+  "inline-block px-md py-sm text-sm font-semibold border border-navy text-navy rounded-xs hover:bg-navy hover:text-white transition-colors";
 
 export function ResourceCard({ category, title, description, featured = true, cta }: ResourceCardProps) {
   return (
@@ -15,14 +18,16 @@ export function ResourceCard({ category, title, description, featured = true, ct
       <CardCategory>{category}</CardCategory>
       <CardTitle>{title}</CardTitle>
       <CardDescription>{description}</CardDescription>
-      {cta && (
-        <Link
-          href={cta.href}
-          className="inline-block px-md py-sm text-sm font-semibold border border-navy text-navy rounded-xs hover:bg-navy hover:text-white transition-colors"
-        >
-          {cta.label}
-        </Link>
-      )}
+      {cta &&
+        (cta.external ? (
+          <a href={cta.href} target="_blank" rel="noopener noreferrer" className={ctaClassName}>
+            {cta.label}
+          </a>
+        ) : (
+          <Link href={cta.href} className={ctaClassName}>
+            {cta.label}
+          </Link>
+        ))}
     </Card>
   );
 }

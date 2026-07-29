@@ -18,7 +18,16 @@ export const metadata: Metadata = buildMetadata({
 
 const resources = [
   { category: "Guide", title: "Home Buyer's Checklist", description: "Complete checklist of everything you need before making an offer" },
-  { category: "Worksheet", title: "Budget Calculator", description: "Calculate your maximum budget based on income and expenses" },
+  {
+    category: "Calculator",
+    title: "Should I Rent or Buy?",
+    description: "Compare the real cost of renting versus buying over time, powered by HAR.com's mortgage calculator.",
+    cta: {
+      label: "Open Calculator →",
+      href: "https://www.har.com/mortgage/time-value-calculators?CALCULATORID=HF05",
+      external: true,
+    },
+  },
 ];
 
 export default function BuyersPage() {
