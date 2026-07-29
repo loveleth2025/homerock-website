@@ -3,11 +3,12 @@ import { AcademyLayout } from "@/layouts/AcademyLayout";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Timeline } from "@/components/sections/Timeline";
+import { FAQ } from "@/components/sections/FAQ";
 import { Card, CardTitle, CardDescription } from "@/components/ui/Card";
 import { ComingSoonButton } from "@/components/ui/ComingSoonButton";
 import { ResourceCard } from "@/components/cards/ResourceCard";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { buyerJourney } from "@/lib/content/buyers";
+import { buyerJourney, buyerFaq } from "@/lib/content/buyers";
 
 export const metadata: Metadata = buildMetadata({
   title: "Home Buyer Academy",
@@ -39,6 +40,16 @@ export default function BuyersPage() {
         <Container>
           <h2>The Buyer&rsquo;s Journey</h2>
           <Timeline steps={buyerJourney} />
+        </Container>
+      </Section>
+
+      <Section>
+        <Container className="max-w-[48rem]">
+          <h2>Questions Buyers Ask Most</h2>
+          <p className="text-sm text-gold-ink font-semibold uppercase tracking-[0.06em] mb-lg">
+            Straight from Natalie&rsquo;s Home Buyer Masterclass
+          </p>
+          <FAQ items={buyerFaq} />
         </Container>
       </Section>
 
