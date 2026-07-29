@@ -50,9 +50,6 @@ export default function BuyersPage() {
       <Section tone="light">
         <Container>
           <h2>Learning Modules</h2>
-          <p className="text-sm text-gold-ink font-semibold uppercase tracking-[0.06em] mb-lg -mt-md">
-            From Natalie&rsquo;s Home Buyer Masterclass — click a module to read it
-          </p>
           <div className="grid grid-cols-1 gap-md">
             {buyerModules.map((module) => (
               <LearningModuleCard key={module.title} {...module} />
