@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/content/PlaceholderPage";
+import { Hero } from "@/components/sections/Hero";
+import { Section } from "@/components/ui/Section";
+import { Container } from "@/components/ui/Container";
+import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
+import { CTA } from "@/components/sections/CTA";
+import { Button } from "@/components/ui/Button";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { buyerFaq } from "@/lib/content/buyers";
 
 export const metadata: Metadata = buildMetadata({
   title: "New Construction Buying Guide",
@@ -8,18 +14,34 @@ export const metadata: Metadata = buildMetadata({
   path: "/buyers/new-construction",
 });
 
+const newConstructionFaq = buyerFaq.find((item) => item.question.includes("builder"))!;
+
 export default function NewConstructionPage() {
   return (
-    <PlaceholderPage
-      title="New Construction Buying Guide"
-      subheading="How buying new construction differs from resale, and why you still need a Realtor"
-      breadcrumbs={[
-        { name: "Home Buyers", path: "/buyers" },
-        { name: "New Construction", path: "/buyers/new-construction" },
-      ]}
-      ctaTitle="Ready to Start Your Buying Journey?"
-      ctaDescription="Book a free consultation to discuss your home buying goals."
-      ctaLabel="Schedule a Consultation →"
-    />
+    <>
+      <BreadcrumbBar
+        items={[{ name: "Home Buyers", path: "/buyers" }, { name: "New Construction", path: "/buyers/new-construction" }]}
+      />
+
+      <Hero
+        title="New Construction Buying Guide"
+        subheading="How buying new construction differs from resale, and why you still need a Realtor"
+        align="left"
+      />
+
+      <Section>
+        <Container className="max-w-[48rem]">
+          <h2>{newConstructionFaq.question}</h2>
+          <p className="text-base leading-relaxed text-gray-dark mb-md">{newConstructionFaq.answer}</p>
+        </Container>
+      </Section>
+
+      <CTA
+        title="Touring a Model Home Soon?"
+        description="Bring your own representation before you sign anything — book a free consultation with Natalie's team first."
+      >
+        <Button href="/booking">Schedule a Consultation →</Button>
+      </CTA>
+    </>
   );
 }
