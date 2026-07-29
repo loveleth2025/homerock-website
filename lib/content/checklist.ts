@@ -68,3 +68,70 @@ export const homeBuyerChecklist: ChecklistSection[] = [
     ],
   },
 ];
+
+/**
+ * DRAFT — general seller best-practices, not yet sourced from a Natalie-specific
+ * deck or document (unlike homeBuyerChecklist above). The "Prepare Your Home"
+ * section is grounded in HAR.com's published seller-prep checklists
+ * (har.com/blog_127615_the-ultimate-checklist-for-preparing-your-home-for-sale
+ * and har.com/blog_82861_before-listing-your-home-for-sale-__-your-pre-listing-checklist).
+ * Remaining sections are general industry practice. Flagged for Natalie's
+ * review; update/replace with her own material once provided.
+ */
+export const preSaleChecklist: ChecklistSection[] = [
+  {
+    title: "Prepare Your Home",
+    items: [
+      "Declutter and depersonalize — stagers often recommend removing about half your belongings",
+      "Deep clean the whole home, including deodorizing and steam-cleaning carpets",
+      "Handle minor repairs — leaky faucets, chipped paint, squeaky doors",
+      "Confirm major systems work and are leak-free: HVAC, water heater, smoke detectors, and the electrical panel/breakers",
+      "Boost curb appeal — mow the lawn, trim bushes, add fresh mulch or flowers",
+      "Consider a pre-listing inspection to catch issues before buyers do",
+    ],
+  },
+  {
+    title: "Price Strategy",
+    items: [
+      "Request a comparative market analysis (CMA) from your Realtor",
+      "Understand how recent, comparable sales in your area affect your price",
+      "Avoid overpricing — homes that sit too long can lose buyer interest",
+      "Discuss pricing strategy for your specific market conditions with your Realtor",
+    ],
+  },
+  {
+    title: "Market Your Home",
+    items: [
+      "Professional photography and, where appropriate, video or a virtual tour",
+      "A written property description that highlights key features",
+      "Listing syndication to major real estate search sites",
+      "A showing schedule that works with your routine",
+    ],
+  },
+  {
+    title: "During Showings & Negotiations",
+    items: [
+      "Keep the home show-ready — clean and staged for last-minute showings",
+      "Review every offer with your Realtor before responding",
+      "Understand contingencies (inspection, financing, appraisal) in any offer",
+      "Negotiate repairs or credits based on inspection findings",
+    ],
+  },
+  {
+    title: "Before You Close",
+    items: [
+      "Complete any agreed-upon repairs",
+      "Keep documentation/receipts for completed repairs",
+      "Schedule the buyer's final walkthrough",
+      "Review and sign your closing documents",
+    ],
+  },
+  {
+    title: "Why Work With a Realtor",
+    items: [
+      "The CMA, professional photography, and listing syndication above are typically handled for you as part of a full-service Realtor's listing package — not extra tasks you take on alone",
+      "A Realtor reviews and negotiates offers on your behalf, so you're not evaluating contingencies or counteroffers by yourself",
+      "A Realtor coordinates showings, repair negotiations, and closing paperwork, keeping the process on track from listing to close",
+    ],
+  },
+];

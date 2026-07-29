@@ -22,7 +22,12 @@ const modules = [
 ];
 
 const resources = [
-  { category: "Guide", title: "Pre-Sale Home Checklist", description: "Complete list of repairs and improvements to maximize sale price" },
+  {
+    category: "Guide",
+    title: "Pre-Sale Home Checklist",
+    description: "Complete list of repairs and improvements to maximize sale price.",
+    cta: { label: "Get the Checklist →", href: "/resources/checklists/pre-sale-checklist" },
+  },
   { category: "Worksheet", title: "Comparative Market Analysis", description: "Analyze comparable homes to determine your home's value" },
 ];
 

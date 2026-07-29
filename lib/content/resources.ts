@@ -19,7 +19,12 @@ export const guides: ResourceItem[] = [
     description: "Complete checklist of everything you need before making an offer.",
     href: "/resources/checklists/home-buyer-checklist",
   },
-  { category: "Guide", title: "Pre-Sale Home Checklist", description: "Complete list of repairs and improvements to maximize sale price." },
+  {
+    category: "Guide",
+    title: "Pre-Sale Home Checklist",
+    description: "Complete list of repairs and improvements to maximize sale price.",
+    href: "/resources/checklists/pre-sale-checklist",
+  },
 ];
 
 export const calculators: ResourceItem[] = [
