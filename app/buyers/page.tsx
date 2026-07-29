@@ -4,23 +4,17 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Timeline } from "@/components/sections/Timeline";
 import { FAQ } from "@/components/sections/FAQ";
-import { Card, CardTitle, CardDescription } from "@/components/ui/Card";
-import { ComingSoonButton } from "@/components/ui/ComingSoonButton";
+import { LearningModuleCard } from "@/components/cards/LearningModuleCard";
 import { ResourceCard } from "@/components/cards/ResourceCard";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { buyerJourney, buyerFaq } from "@/lib/content/buyers";
+import { buyerJourney, buyerFaq, buyerModules } from "@/lib/content/buyers";
 
 export const metadata: Metadata = buildMetadata({
   title: "Home Buyer Academy",
-  description: "Master the home buying process from pre-approval to closing with Natalie Pilkinton's Home Buyer Academy.",
+  description:
+    "Learn conventional, FHA, USDA, and VA loan requirements, Texas down payment assistance programs, and closing cost budgeting with Natalie Pilkinton's Home Buyer Academy.",
   path: "/buyers",
 });
-
-const modules = [
-  { icon: "📋", title: "Pre-Approval Essentials", description: "What you need to know before getting pre-approved for a mortgage" },
-  { icon: "🔍", title: "Finding the Right Home", description: "Tips and strategies for finding a property that meets your needs" },
-  { icon: "💰", title: "Offer Strategy", description: "How to make a competitive offer in any market" },
-];
 
 const resources = [
   { category: "Guide", title: "Home Buyer's Checklist", description: "Complete checklist of everything you need before making an offer" },
@@ -56,15 +50,12 @@ export default function BuyersPage() {
       <Section tone="light">
         <Container>
           <h2>Learning Modules</h2>
-          <div className="grid grid-cols-3 max-md:grid-cols-1 gap-lg">
-            {modules.map((module) => (
-              <Card key={module.title}>
-                <CardTitle>
-                  {module.icon} {module.title}
-                </CardTitle>
-                <CardDescription>{module.description}</CardDescription>
-                <ComingSoonButton />
-              </Card>
+          <p className="text-sm text-gold-ink font-semibold uppercase tracking-[0.06em] mb-lg -mt-md">
+            From Natalie&rsquo;s Home Buyer Masterclass — click a module to read it
+          </p>
+          <div className="grid grid-cols-1 gap-md">
+            {buyerModules.map((module) => (
+              <LearningModuleCard key={module.title} {...module} />
             ))}
           </div>
         </Container>
