@@ -5,8 +5,8 @@ import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { type Crumb } from "@/components/layout/Breadcrumbs";
 import { Card, CardCategory, CardTitle, CardDescription } from "@/components/ui/Card";
 import { ComingSoonButton } from "@/components/ui/ComingSoonButton";
-import { CTA } from "@/components/sections/CTA";
 import { Button } from "@/components/ui/Button";
+import { CTA } from "@/components/sections/CTA";
 import type { ResourceItem } from "@/lib/content/resources";
 
 type ResourceListPageProps = {
@@ -31,7 +31,13 @@ export function ResourceListPage({ title, subheading, breadcrumbs, items }: Reso
                 <CardCategory>{item.category}</CardCategory>
                 <CardTitle>{item.title}</CardTitle>
                 <CardDescription>{item.description}</CardDescription>
-                <ComingSoonButton />
+                {item.href ? (
+                  <Button href={item.href} size="small">
+                    View Checklist →
+                  </Button>
+                ) : (
+                  <ComingSoonButton />
+                )}
               </Card>
             ))}
           </div>

@@ -2,15 +2,23 @@ export type ResourceItem = {
   category: string;
   title: string;
   description: string;
+  /** When present, the card links here instead of showing "Coming Soon". */
+  href?: string;
 };
 
 /**
  * Every item below is named directly after a card that already exists in the
  * legacy site (as a "Coming Soon" tool or an unlinked checklist/worksheet
- * title) — nothing here is invented. None are functional yet.
+ * title) — nothing here is invented. Items without an `href` are not
+ * functional yet.
  */
 export const guides: ResourceItem[] = [
-  { category: "Guide", title: "Home Buyer's Checklist", description: "Complete checklist of everything you need before making an offer." },
+  {
+    category: "Guide",
+    title: "Home Buyer's Checklist",
+    description: "Complete checklist of everything you need before making an offer.",
+    href: "/resources/checklists/home-buyer-checklist",
+  },
   { category: "Guide", title: "Pre-Sale Home Checklist", description: "Complete list of repairs and improvements to maximize sale price." },
 ];
 
@@ -21,7 +29,12 @@ export const calculators: ResourceItem[] = [
 ];
 
 export const checklists: ResourceItem[] = [
-  { category: "Checklist", title: "Home Buyer's Checklist", description: "Complete checklist of everything you need before making an offer." },
+  {
+    category: "Checklist",
+    title: "Home Buyer's Checklist",
+    description: "Complete checklist of everything you need before making an offer.",
+    href: "/resources/checklists/home-buyer-checklist",
+  },
   { category: "Checklist", title: "Pre-Sale Home Checklist", description: "Complete list of repairs and improvements to maximize sale price." },
 ];
 

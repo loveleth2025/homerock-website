@@ -1,0 +1,214 @@
+{
+  "name": "HomeRock — Lead Magnet Capture",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Setup checklist\n1. Create a credential: **Credentials → New → Header Auth**\n   - Name: `GoHighLevel API Key`\n   - Header Name: `Authorization`\n   - Header Value: `Bearer YOUR_GHL_PRIVATE_INTEGRATION_TOKEN`\n2. In the **Upsert Contact in GoHighLevel** node, replace `YOUR_GHL_LOCATION_ID` in the JSON body with your real GHL Location ID.\n3. Activate this workflow, then copy the **Production URL** from the Webhook node.\n4. Send that URL back — it goes into the website's `LEAD_CAPTURE_WEBHOOK_URL` environment variable.\n\n## Reusable for every lead magnet\nThis ONE workflow handles all gated resources (Buyer's Checklist, future Seller's Guide, etc.). Each website form sends a `resource` value (e.g. `buyer-checklist`) along with name/email. That value becomes the tag `lead-magnet:{resource}` in GoHighLevel — no n8n changes needed for new magnets.\n\nFor EACH lead magnet, build ONE small automation in GoHighLevel: Trigger = *Contact Tag Added* (`lead-magnet:buyer-checklist`, etc.) → Action = *Send Email* with that resource attached/linked.",
+        "height": 480,
+        "width": 480
+      },
+      "id": "sticky-setup-notes",
+      "name": "Setup Notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-220, 0]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-magnet",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Website Form Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "lead-magnet"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "cond-honeypot-empty",
+              "leftValue": "={{ $json.body.honeypot }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "cond-email-present",
+              "leftValue": "={{ $json.body.email }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "cond-resource-present",
+              "leftValue": "={{ $json.body.resource }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "validate-submission",
+      "name": "Valid Submission?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "field-email",
+              "name": "email",
+              "type": "string",
+              "value": "={{ $json.body.email.trim().toLowerCase() }}"
+            },
+            {
+              "id": "field-firstname",
+              "name": "firstName",
+              "type": "string",
+              "value": "={{ $json.body.name.trim().split(' ')[0] }}"
+            },
+            {
+              "id": "field-lastname",
+              "name": "lastName",
+              "type": "string",
+              "value": "={{ $json.body.name.trim().split(' ').slice(1).join(' ') }}"
+            },
+            {
+              "id": "field-fullname",
+              "name": "fullName",
+              "type": "string",
+              "value": "={{ $json.body.name.trim() }}"
+            },
+            {
+              "id": "field-resource",
+              "name": "resource",
+              "type": "string",
+              "value": "={{ $json.body.resource.trim().toLowerCase() }}"
+            },
+            {
+              "id": "field-resourcetag",
+              "name": "resourceTag",
+              "type": "string",
+              "value": "=lead-magnet:{{ $json.body.resource.trim().toLowerCase() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "normalize-fields",
+      "name": "Normalize Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [680, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://services.leadconnectorhq.com/contacts/upsert",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Version", "value": "2021-07-28" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"locationId\": \"YOUR_GHL_LOCATION_ID\",\n  \"email\": \"{{ $json.email }}\",\n  \"firstName\": \"{{ $json.firstName }}\",\n  \"lastName\": \"{{ $json.lastName }}\",\n  \"tags\": [\"newsletter\", \"{{ $json.resourceTag }}\"],\n  \"source\": \"HomeRock Website - {{ $json.resource }}\"\n}",
+        "options": {}
+      },
+      "id": "ghl-upsert-contact",
+      "name": "Upsert Contact in GoHighLevel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 200],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "GoHighLevel API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"success\": true,\n  \"message\": \"Lead captured and sent to GoHighLevel.\"\n}",
+        "options": {}
+      },
+      "id": "respond-success",
+      "name": "Respond Success",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={\n  \"success\": false,\n  \"message\": \"Invalid submission.\"\n}",
+        "options": {
+          "responseCode": 400
+        }
+      },
+      "id": "respond-invalid",
+      "name": "Respond Invalid",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [680, 420]
+    }
+  ],
+  "connections": {
+    "Website Form Webhook": {
+      "main": [
+        [{ "node": "Valid Submission?", "type": "main", "index": 0 }]
+      ]
+    },
+    "Valid Submission?": {
+      "main": [
+        [{ "node": "Normalize Fields", "type": "main", "index": 0 }],
+        [{ "node": "Respond Invalid", "type": "main", "index": 0 }]
+      ]
+    },
+    "Normalize Fields": {
+      "main": [
+        [{ "node": "Upsert Contact in GoHighLevel", "type": "main", "index": 0 }]
+      ]
+    },
+    "Upsert Contact in GoHighLevel": {
+      "main": [
+        [{ "node": "Respond Success", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

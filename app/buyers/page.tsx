@@ -17,7 +17,12 @@ export const metadata: Metadata = buildMetadata({
 });
 
 const resources = [
-  { category: "Guide", title: "Home Buyer's Checklist", description: "Complete checklist of everything you need before making an offer" },
+  {
+    category: "Guide",
+    title: "Home Buyer's Checklist",
+    description: "Complete checklist of everything you need before making an offer.",
+    cta: { label: "Get the Checklist →", href: "/resources/checklists/home-buyer-checklist" },
+  },
   {
     category: "Calculator",
     title: "Should I Rent or Buy?",
