@@ -126,3 +126,47 @@ export default async function BlogArticlePage({
                   <div 
                     className="w-24 h-24 rounded-full mb-md flex items-center justify-center text-4xl font-bold"
                     style={{ backgroundColor: '#c9a227' }}
+                  >
+                    NP
+                  </div>
+                  <h3 className="text-lg font-bold mb-sm">Natalie Pilkinton</h3>
+                  <p className="text-sm text-gray-300 mb-md font-semibold">REALTOR®</p>
+                  <p className="text-xs text-gray-400 mb-lg leading-relaxed">
+                    Helping buyers, sellers, and investors achieve their real estate goals in Houston.
+                  </p>
+                  <Link 
+                    href="https://outlook.office.com/bookwithme/user/f39b29ca72d4472699897db031f61fd7@homerockrealty.com/meetingtype/OLdPZ9Q4HUKXNbgzgjnasg2"
+                    className="w-full px-lg py-sm rounded font-semibold transition-colors text-center"
+                    style={{ backgroundColor: '#c9a227', color: '#0a1a33' }}
+                  >
+                    Book a Call
+                  </Link>
+                </div>
+              </div>
+
+              {relatedArticles.length > 0 && (
+                <div className="border border-gray-200 rounded-lg p-lg">
+                  <h4 className="font-bold mb-lg text-navy text-sm uppercase tracking-wide">Related Articles</h4>
+                  <div className="space-y-md">
+                    {relatedArticles.map((relArticle) => (
+                      <Link
+                        key={relArticle.id}
+                        href={`/blog/${relArticle.category}/${relArticle.slug}`}
+                        className="block group pb-md border-b border-gray-100 last:border-b-0"
+                      >
+                        <h5 className="font-semibold text-sm mb-xs group-hover:text-blue transition-colors line-clamp-2">
+                          {relArticle.title}
+                        </h5>
+                        <p className="text-xs text-gray-600">{relArticle.readTime}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </Container>
+      </Section>
+    </>
+  );
+}
