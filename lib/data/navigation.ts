@@ -159,5 +159,5 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/in/nataliepilkinton",
     youtube: "https://youtube.com/@nataliepilkinton",
   },
-  siteUrl: "https://www.homerockrealty.com",
+  siteUrl: "https://www.nataliepilkinton.com",
 };
