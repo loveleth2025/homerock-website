@@ -3,9 +3,8 @@ import Link from "next/link";
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
-import { PlaceholderNotice } from "@/components/ui/PlaceholderNotice";
 import { SearchBar } from "@/components/forms/SearchBar";
-import { blogCategories, categoryLabels } from "@/lib/content/blog";
+import { blogArticles, blogCategories, categoryLabels } from "@/lib/content/blog";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -17,14 +16,17 @@ export const metadata: Metadata = buildMetadata({
 export default function BlogPage() {
   return (
     <>
-      <Hero title="The HomeRock Blog" subheading="Real estate education for buyers, sellers, investors, and realtors" align="left" />
-
+      <Hero 
+        title="The HomeRock Blog" 
+        subheading="Real estate education for buyers, sellers, investors, and realtors" 
+        align="left" 
+      />
       <Section>
         <Container>
           <div className="mb-2xl">
             <SearchBar placeholder="Search articles..." />
           </div>
-
+          
           <div className="flex gap-md flex-wrap mb-2xl">
             {blogCategories.map((category) => (
               <Link
@@ -37,7 +39,29 @@ export default function BlogPage() {
             ))}
           </div>
 
-          <PlaceholderNotice note="No articles have been published yet." />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+            {blogArticles.map((article) => (
+              <Link
+                key={article.id}
+                href={`/blog/${article.category}/${article.slug}`}
+                className="group border border-gray-200 rounded-lg p-lg hover:shadow-lg transition-shadow"
+              >
+                <div className="mb-sm">
+                  <span className="text-xs font-semibold text-navy uppercase">
+                    {categoryLabels[article.category]}
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold mb-sm group-hover:text-navy transition-colors">
+                  {article.title}
+                </h3>
+                <p className="text-sm text-gray-600 mb-md">{article.excerpt}</p>
+                <div className="flex justify-between items-center text-xs text-gray-500">
+                  <span>{article.date}</span>
+                  <span>{article.readTime}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </Container>
       </Section>
     </>
