@@ -9,10 +9,64 @@ export const categoryLabels: Record<BlogCategory, string> = {
   "market-news": "Market News",
 };
 
-export interface BlogSection {
+/** Plain heading + paragraphs block — the original/default section shape. */
+export interface TextBlock {
+  type?: "text";
   heading?: string;
   paragraphs: string[];
 }
+
+/** Four-up stat cards, e.g. inventory / price / days-on-market / buyer power. */
+export interface StatsBlock {
+  type: "stats";
+  items: {
+    label: string;
+    value: string;
+    trend?: string;
+    direction?: "up" | "down" | "flat";
+  }[];
+}
+
+/** Single emphasized pull-quote. */
+export interface PullquoteBlock {
+  type: "pullquote";
+  quote: string;
+}
+
+/** Neighborhood/area comparison cards. */
+export interface NeighborhoodsBlock {
+  type: "neighborhoods";
+  items: {
+    name: string;
+    price: string;
+    status: "growing" | "stable" | "cooling";
+  }[];
+}
+
+/** Side-by-side comparison columns (e.g. Buyers vs. Sellers). */
+export interface CompareBlock {
+  type: "compare";
+  columns: {
+    heading: string;
+    items: string[];
+    variant: "light" | "dark";
+  }[];
+}
+
+/** Highlighted bullet summary, styled as a navy callout box. */
+export interface TakeawaysBlock {
+  type: "takeaways";
+  heading?: string;
+  items: string[];
+}
+
+export type BlogSection =
+  | TextBlock
+  | StatsBlock
+  | PullquoteBlock
+  | NeighborhoodsBlock
+  | CompareBlock
+  | TakeawaysBlock;
 
 export interface BlogArticle {
   id: string;

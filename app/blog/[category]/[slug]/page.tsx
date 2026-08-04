@@ -7,6 +7,13 @@ import { Container } from "@/components/ui/Container";
 import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { blogArticles, categoryLabels } from "@/lib/content/blog";
 import { buildMetadata } from "@/lib/seo/metadata";
+import {
+  StatsGrid,
+  Pullquote,
+  NeighborhoodSpotlight,
+  BuyerSellerCompare,
+  Takeaways,
+} from "@/components/blog/BlogBlocks";
 
 export function generateStaticParams() {
   return blogArticles.map((article) => ({ category: article.category, slug: article.slug }));
@@ -87,22 +94,37 @@ export default async function BlogArticlePage({
                 </p>
                 
                 <div className="space-y-lg">
-                  {article.content.map((section, sectionIdx) => (
-                    <div key={sectionIdx}>
-                      {section.heading && (
-                        <h3 className="text-2xl font-bold mt-2xl mb-md" style={{ color: '#0a1a33' }}>
-                          {section.heading}
-                        </h3>
-                      )}
-                      <div className="space-y-md">
-                        {section.paragraphs.map((paragraph, paraIdx) => (
-                          <p key={`${sectionIdx}-${paraIdx}`} className="text-base text-gray-700 leading-relaxed">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                  {article.content.map((section, sectionIdx) => {
+                    switch (section.type) {
+                      case "stats":
+                        return <StatsGrid key={sectionIdx} items={section.items} />;
+                      case "pullquote":
+                        return <Pullquote key={sectionIdx} quote={section.quote} />;
+                      case "neighborhoods":
+                        return <NeighborhoodSpotlight key={sectionIdx} items={section.items} />;
+                      case "compare":
+                        return <BuyerSellerCompare key={sectionIdx} columns={section.columns} />;
+                      case "takeaways":
+                        return <Takeaways key={sectionIdx} heading={section.heading} items={section.items} />;
+                      default:
+                        return (
+                          <div key={sectionIdx}>
+                            {section.heading && (
+                              <h3 className="text-2xl font-bold mt-2xl mb-md" style={{ color: '#0a1a33' }}>
+                                {section.heading}
+                              </h3>
+                            )}
+                            <div className="space-y-md">
+                              {section.paragraphs.map((paragraph, paraIdx) => (
+                                <p key={`${sectionIdx}-${paraIdx}`} className="text-base text-gray-700 leading-relaxed">
+                                  {paragraph}
+                                </p>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                    }
+                  })}
                 </div>
               </article>
 
