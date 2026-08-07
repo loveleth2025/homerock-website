@@ -46,7 +46,6 @@ export function websiteSchema() {
     "@type": "WebSite",
     name: `${siteConfig.name} | ${siteConfig.brand}`,
     url: siteConfig.siteUrl,
-    // Matches the real client-side search on /blog (SearchBar submits ?q=) — not aspirational.
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -106,11 +105,6 @@ export function articleSchema(input: {
   };
 }
 
-/**
- * Product+Offer is the most widely-recognized schema.org pattern for a
- * priced, physical item — there's no dedicated "listing" type in the
- * schema.org vocabulary, so this mirrors what most real estate sites use.
- */
 export function listingSchema(listing: Listing) {
   const { address } = listing;
   return {
@@ -152,7 +146,6 @@ export function faqSchema(items: { question: string; answer: string }[]) {
   };
 }
 
-/** Renders a schema object as an inline JSON-LD script tag. */
 export function jsonLdScriptProps(schema: object) {
   return {
     type: "application/ld+json",

@@ -8,11 +8,41 @@ import { jsonLdScriptProps, localBusinessSchema, personSchema, websiteSchema } f
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: "Natalie Pilkinton | Educational Authority for Home Buyers, Sellers & Investors",
-    template: `%s | ${siteConfig.name}`,
+    default: "Natalie Pilkinton, Houston REALTOR® | Home Buyers, Sellers & Investors | Spring TX",
+    template: `%s | ${siteConfig.name} - ${siteConfig.brand}`,
   },
-  description:
-    "Texas Realtor, real estate investor, and educator Natalie Pilkinton of HomeRock Realty teaches home buyers, sellers, investors, and realtors through guides, courses, and her podcast.",
+  description: "Houston REALTOR® Natalie Pilkinton guides buyers, sellers & investors through Texas real estate. Specializing in Spring, The Woodlands, Katy & more. Schedule your free consultation today. Call (832) 863-3468.",
+  keywords: "Houston REALTOR, Houston real estate agent, buy home Spring TX, sell home Houston, real estate investing Houston, HomeRock Realty",
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.brand,
+  
+  // OpenGraph
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.siteUrl,
+    siteName: `${siteConfig.name} - ${siteConfig.brand}`,
+    title: "Natalie Pilkinton, Houston REALTOR® | Home Buyers, Sellers & Investors",
+    description: "Houston REALTOR® Natalie Pilkinton guides buyers, sellers & investors through Texas real estate.",
+    images: [
+      {
+        url: "https://assets.cdn.filesafe.space/p6coQEMK9WucfxjPnduV/media/6a58be7f524a3ec4c61853f3.png",
+        width: 1200,
+        height: 630,
+        alt: "Natalie Pilkinton - Houston REALTOR®",
+      },
+    ],
+  },
+  
+  // Twitter
+  twitter: {
+    card: "summary_large_image",
+    title: "Natalie Pilkinton, Houston REALTOR®",
+    description: "Expert real estate guidance for buyers, sellers & investors.",
+    images: ["https://assets.cdn.filesafe.space/p6coQEMK9WucfxjPnduV/media/6a58be7f524a3ec4c61853f3.png"],
+  },
+  
   icons: {
     icon: siteConfig.faviconUrl,
     apple: siteConfig.faviconUrl,
@@ -33,13 +63,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
+      <head>
+        {/* Canonical */}
+        <link rel="canonical" href={siteConfig.siteUrl} />
+        
+        {/* Schema Markup */}
+        <script {...jsonLdScriptProps(localBusinessSchema())} />
+        <script {...jsonLdScriptProps(personSchema())} />
+        <script {...jsonLdScriptProps(websiteSchema())} />
+      </head>
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <script {...jsonLdScriptProps(localBusinessSchema())} />
-        <script {...jsonLdScriptProps(personSchema())} />
-        <script {...jsonLdScriptProps(websiteSchema())} />
         <Header />
         <main id="main-content" className="flex-1">
           {children}
