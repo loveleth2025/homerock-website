@@ -8,6 +8,7 @@ import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { categoryLabels } from "@/lib/content/blog";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { getArticles, getArticleBySlug } from "@/lib/sanity/client";
+import { PortableText } from '@portabletext/react'
 
 export async function generateStaticParams() {
   const articles = await getArticles();
