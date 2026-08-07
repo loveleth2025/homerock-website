@@ -15,9 +15,9 @@ import { homeStats } from "@/lib/data/stats";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Natalie Pilkinton | Educational Authority for Home Buyers, Sellers & Investors",
+  title: "Natalie Pilkinton, Houston REALTOR® | Home Buyers, Sellers & Investors | Spring TX",
   description:
-    "Learn from a Texas Realtor, investor, and educator who's built wealth through real estate. Get actionable strategies for buying, selling, and investing.",
+    "Houston REALTOR® Natalie Pilkinton guides buyers, sellers & investors through Texas real estate. Specializing in Spring, The Woodlands, Katy & more. Schedule your free consultation today. Call (832) 863-3468.",
   path: "/",
 });
 
