@@ -17,7 +17,7 @@ import { siteConfig } from "@/lib/data/navigation";
 
 export const metadata: Metadata = buildMetadata({
   title: "Watch & Listen",
-  description: "Videos, webinars, and the Sugar Spice & Spirits podcast, hosted by Natalie Pilkinton.",
+  description: "Videos, webinars, and the Sugar Spice & Spirits podcast, hosted by Natalie Pilkinton, Mindy Price and Kelly Williams.",
   path: "/podcast",
 });
 
