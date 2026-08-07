@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { PortableText } from '@portabletext/react'
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
@@ -8,7 +9,27 @@ import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { categoryLabels } from "@/lib/content/blog";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { getArticles, getArticleBySlug } from "@/lib/sanity/client";
-import { PortableText } from '@portabletext/react'
+
+const portableTextComponents = {
+  block: {
+    h1: ({ children }: any) => <h1 className="text-4xl font-bold mt-2xl mb-md" style={{ color: '#0a1a33' }}>{children}</h1>,
+    h2: ({ children }: any) => <h2 className="text-3xl font-bold mt-2xl mb-md" style={{ color: '#0a1a33' }}>{children}</h2>,
+    h3: ({ children }: any) => <h3 className="text-2xl font-bold mt-2xl mb-md" style={{ color: '#0a1a33' }}>{children}</h3>,
+    normal: ({ children }: any) => <p className="text-base text-gray-700 leading-relaxed mb-md">{children}</p>,
+    blockquote: ({ children }: any) => <blockquote className="border-l-4 border-blue pl-lg italic text-gray-600 my-md">{children}</blockquote>,
+  },
+  marks: {
+    strong: ({ children }: any) => <strong className="font-bold">{children}</strong>,
+    em: ({ children }: any) => <em className="italic">{children}</em>,
+    underline: ({ children }: any) => <u className="underline">{children}</u>,
+  },
+  list: {
+    bullet: ({ children }: any) => <ul className="list-disc list-inside space-y-sm mb-md">{children}</ul>,
+  },
+  listItem: {
+    bullet: ({ children }: any) => <li className="text-gray-700">{children}</li>,
+  },
+}
 
 export async function generateStaticParams() {
   const articles = await getArticles();
@@ -36,6 +57,8 @@ export async function generateMetadata({
     path: `/blog/${category}/${slug}`,
   });
 }
+
+export const revalidate = 0;
 
 export default async function BlogArticlePage({
   params,
@@ -98,8 +121,8 @@ export default async function BlogArticlePage({
                 </p>
 
                 <div className="space-y-lg prose prose-sm max-w-none">
-  <PortableText value={article.content} components={portableTextComponents} />
-</div>
+                  <PortableText value={article.content} components={portableTextComponents} />
+                </div>
               </article>
 
               <div className="pt-2xl border-t border-gray-200">
