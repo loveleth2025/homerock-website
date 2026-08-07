@@ -8,6 +8,8 @@ import { categoryLabels, blogCategories } from "@/lib/content/blog";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { getArticles } from "@/lib/sanity/client";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = buildMetadata({
   title: "Blog",
   description: "Real estate education articles for Texas home buyers, sellers, investors, and realtors.",
