@@ -32,7 +32,8 @@ export default async function CategoryPage({
 }) {
   const { category } = await params;
   const articles = await getArticles();
-  const categoryArticles = articles?.filter((article: any) => article.category === category) || [];
+  const typedArticles = articles as any[];
+  const categoryArticles = typedArticles?.filter((article: any) => article.category === category) || [];
 
   return (
     <>
@@ -60,7 +61,7 @@ export default async function CategoryPage({
               >
                 <div className="mb-sm">
                   <span className="text-xs font-semibold text-navy uppercase">
-                    {categoryLabels[article.category]}
+                    {categoryLabels[article.category as keyof typeof categoryLabels]}
                   </span>
                 </div>
                 <h3 className="text-lg font-bold mb-sm group-hover:text-navy transition-colors">

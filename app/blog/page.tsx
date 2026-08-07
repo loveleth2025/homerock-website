@@ -16,6 +16,7 @@ export const metadata: Metadata = buildMetadata({
 
 export default async function BlogPage() {
   const articles = await getArticles();
+  const typedArticles = articles as any[];
 
   return (
     <>
@@ -41,7 +42,7 @@ export default async function BlogPage() {
             ))}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-            {articles?.map((article: any) => (
+            {typedArticles?.map((article: any) => (
               <Link
                 key={article._id}
                 href={`/blog/${article.category}/${article.slug.current}`}
@@ -49,7 +50,7 @@ export default async function BlogPage() {
               >
                 <div className="mb-sm">
                   <span className="text-xs font-semibold text-navy uppercase">
-                    {categoryLabels[article.category]}
+                    {categoryLabels[article.category as keyof typeof categoryLabels]}
                   </span>
                 </div>
                 <h3 className="text-lg font-bold mb-sm group-hover:text-navy transition-colors">
