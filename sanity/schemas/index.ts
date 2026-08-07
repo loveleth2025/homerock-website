@@ -1,3 +1,4 @@
+import blockContent from './blockContent'
 import article from './article'
 
-export default [article]
+export const schemaTypes = [blockContent, article]

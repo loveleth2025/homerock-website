@@ -96,24 +96,9 @@ export default async function BlogArticlePage({
                   {article.excerpt}
                 </p>
 
-                <div className="space-y-lg">
-                  {article.content?.map((section: any, sectionIdx: number) => (
-                    <div key={sectionIdx}>
-                      {section.heading && (
-                        <h3 className="text-2xl font-bold mt-2xl mb-md" style={{ color: '#0a1a33' }}>
-                          {section.heading}
-                        </h3>
-                      )}
-                      <div className="space-y-md">
-                        {section.paragraphs?.map((paragraph: string, paraIdx: number) => (
-                          <p key={`${sectionIdx}-${paraIdx}`} className="text-base text-gray-700 leading-relaxed">
-                            {paragraph}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <div className="space-y-lg prose prose-sm max-w-none">
+  <PortableText value={article.content} components={portableTextComponents} />
+</div>
               </article>
 
               <div className="pt-2xl border-t border-gray-200">

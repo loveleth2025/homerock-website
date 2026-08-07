@@ -43,21 +43,7 @@ export default {
     {
       name: 'content',
       title: 'Content',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            { name: 'heading', type: 'string', title: 'Heading (optional)' },
-            {
-              name: 'paragraphs',
-              type: 'array',
-              of: [{ type: 'string' }],
-              title: 'Paragraphs',
-            },
-          ],
-        },
-      ],
+      type: 'blockContent',
       validation: (Rule: any) => Rule.required(),
     },
     {
