@@ -7,9 +7,7 @@ export async function GET(
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params
-) {
   try {
-    const slug = params.slug
     const blogContentDir = path.join(process.cwd(), 'public', 'blog-content')
     
     const files = fs.readdirSync(blogContentDir)
