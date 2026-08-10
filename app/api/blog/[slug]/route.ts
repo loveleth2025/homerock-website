@@ -1,4 +1,4 @@
-﻿import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
@@ -10,7 +10,6 @@ export async function GET(
     const slug = params.slug
     const blogContentDir = path.join(process.cwd(), 'public', 'blog-content')
     
-    // Find file matching this slug
     const files = fs.readdirSync(blogContentDir)
     const file = files.find((f: string) => f.includes(slug))
     
@@ -21,7 +20,6 @@ export async function GET(
     const content = fs.readFileSync(path.join(blogContentDir, file), 'utf-8')
     const lines = content.split('\n')
     
-    // Parse metadata
     const metadata: any = {}
     let bodyStartIndex = 0
     
@@ -37,7 +35,6 @@ export async function GET(
       }
     }
     
-    // Get body content
     const body = lines.slice(bodyStartIndex).join('\n').trim()
     
     return NextResponse.json({

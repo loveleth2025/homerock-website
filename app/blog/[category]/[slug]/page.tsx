@@ -1,12 +1,15 @@
-import { getArticleBySlug } from '@/lib/blog'
 import Link from 'next/link'
 
 export default async function ArticlePage({ params }: { params: { category: string; slug: string } }) {
-  const article = await getArticleBySlug(params.slug)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/blog/${params.slug}`, {
+    cache: 'no-store'
+  })
 
-  if (!article) {
+  if (!res.ok) {
     return <div>Article not found</div>
   }
+
+  const article = await res.json()
 
   return (
     <div className="max-w-3xl mx-auto px-6 py-12">
