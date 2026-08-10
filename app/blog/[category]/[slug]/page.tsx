@@ -1,7 +1,9 @@
 import Link from 'next/link'
 
-export default async function ArticlePage({ params }: { params: { category: string; slug: string } }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/blog/${params.slug}`, {
+export default async function ArticlePage({ params }: { params: Promise<{ category: string; slug: string }> }) {
+  const { slug } = await params
+  
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/blog/${slug}`, {
     cache: 'no-store'
   })
 
