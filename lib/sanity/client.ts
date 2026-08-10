@@ -1,4 +1,4 @@
-﻿import {createClient} from 'next-sanity'
+import {createClient} from 'next-sanity'
 
 export const client = createClient({
   projectId: '7976atf0',
@@ -8,7 +8,7 @@ export const client = createClient({
 })
 
 export async function getArticles() {
-  return client.fetch(
+  return client.fetch(`
     *[_type == "article"] | order(publishedAt desc) {
       _id,
       title,
@@ -19,12 +19,12 @@ export async function getArticles() {
       publishedAt,
       readTime
     }
-  )
+  `)
 }
 
 export async function getArticleBySlug(slug: string) {
-  return client.fetch(
-    *[_type == "article" && slug.current == ][0] {
+  return client.fetch(`
+    *[_type == "article" && slug.current == $slug][0] {
       _id,
       title,
       slug,
@@ -34,5 +34,5 @@ export async function getArticleBySlug(slug: string) {
       publishedAt,
       readTime
     }
-  , {slug})
+  `, {slug})
 }
