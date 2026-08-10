@@ -1,0 +1,33 @@
+TITLE: How to Analyze Investment Properties
+CATEGORY: investing
+SLUG: analyze-investment-properties
+DATE: July 14, 2026
+READ TIME: 11 min
+EXCERPT: Master the key metrics every real estate investor needs to evaluate a property.
+
+================================================================================
+
+Analyzing investment properties isn't magic—it's math. Learn these five key metrics and you'll be able to evaluate almost any real estate deal quickly and accurately.
+
+CAP RATE (CAPITALIZATION RATE)
+Cap Rate = Net Operating Income / Property Value
+
+This tells you the annual return on your investment, assuming you paid cash. A 5% cap rate means you'd make 5% annually. Houston investment properties typically have 5-7% cap rates depending on location and condition.
+
+CASH-ON-CASH RETURN
+This measures how much cash you get back each year relative to the cash you invested. If you put $50K down and make $6K in annual cash flow, your cash-on-cash return is 12%. Most investors target 8-12% cash-on-cash returns.
+
+DSCR (DEBT SERVICE COVERAGE RATIO)
+DSCR = Net Operating Income / Annual Debt Service
+
+Lenders care about this number. It shows whether rental income covers your mortgage payments. Most lenders want to see a DSCR of at least 1.25. A DSCR of 1.5 is excellent.
+
+PRICE-TO-RENT RATIO
+Price-to-Rent = Property Price / Annual Rental Income
+
+Lower ratios (16-18) indicate better rental income relative to price. Higher ratios (22+) suggest lower rental yields. Houston typically sees 18-21 P/R ratios in rental-friendly neighborhoods.
+
+THE 70% RULE
+Maximum Offer = (ARV × 0.7) - Repairs
+
+This helps you find good deals quickly. If a property's After Repair Value is $300K and repairs cost $30K, you shouldn't pay more than $180K. This leaves room for profit and contingencies.

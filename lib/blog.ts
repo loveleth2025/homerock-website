@@ -1,7 +1,7 @@
 ﻿import fs from 'fs';
 import path from 'path';
 
-const blogContentDir = path.join(process.cwd(), 'blog-content');
+const blogContentDir = path.join(process.cwd(), 'public', 'blog-content');
 
 export async function getArticleBySlug(slug: string) {
   try {
