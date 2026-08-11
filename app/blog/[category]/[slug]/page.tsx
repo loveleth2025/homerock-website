@@ -2,12 +2,42 @@ import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { categoryLabels } from '@/lib/content/blog'
+import { buildMetadata } from '@/lib/seo/metadata'
+import type { Metadata } from 'next'
+
+async function getArticle(slug: string) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/blog/${slug}`, { cache: 'no-store' })
+  if (!res.ok) return null
+  return res.json()
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ category: string; slug: string }> }): Promise<Metadata> {
+  const { category, slug } = await params
+  const article = await getArticle(slug)
+
+  if (!article) {
+    return buildMetadata({
+      title: 'Article Not Found',
+      description: 'This article could not be found.',
+      path: `/blog/${category}/${slug}`,
+    })
+  }
+
+  return buildMetadata({
+    title: article.title,
+    description: article.excerpt,
+    path: `/blog/${category}/${slug}`,
+    image: article.image,
+  })
+}
 
 export default async function ArticlePage({ params }: { params: Promise<{ category: string; slug: string }> }) {
   const { category, slug } = await params
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/blog/${slug}`, { cache: 'no-store' })
-  if (!res.ok) return <div className="p-8">Article not found</div>
-  const article = await res.json()
+  const article = await getArticle(slug)
+
+  if (!article) {
+    return <div className="p-8">Article not found</div>
+  }
   return (
     <>
       <div className="w-full py-xl flex items-center justify-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a1a33 0%, #0e6bc7 50%, #0e6bc7 100%)', minHeight: '24rem' }}>

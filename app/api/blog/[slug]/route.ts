@@ -43,6 +43,7 @@ export async function GET(
       slug: metadata.slug,
       category: metadata.category,
       excerpt: metadata.excerpt,
+      image: metadata.image,
       content: body,
       publishedAt: metadata.date,
       readTime: parseInt(metadata['read time']) || 5,
