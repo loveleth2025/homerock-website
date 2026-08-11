@@ -52,14 +52,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
         </Container>
       </div>
       {article.image && (
-        <div className="w-full flex justify-center py-lg">
-          <Image
-            src={article.image}
-            alt={article.title}
-            width={1200}
-            height={630}
-            className="max-w-3xl w-full h-auto rounded-lg"
-          />
+        <div className="w-full py-lg">
+          <Container>
+            <Image
+              src={article.image}
+              alt={article.title}
+              width={1200}
+              height={630}
+              className="max-w-[48rem] w-full h-auto rounded-lg"
+            />
+          </Container>
         </div>
       )}
       <Section>

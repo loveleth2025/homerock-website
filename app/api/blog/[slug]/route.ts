@@ -30,7 +30,9 @@ export async function GET(
         break
       }
       if (line.includes(':')) {
-        const [key, value] = line.split(':').map(s => s.trim())
+        const colonIndex = line.indexOf(':')
+        const key = line.slice(0, colonIndex).trim()
+        const value = line.slice(colonIndex + 1).trim()
         metadata[key.toLowerCase()] = value
       }
     }

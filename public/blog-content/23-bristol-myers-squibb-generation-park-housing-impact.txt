@@ -4,7 +4,7 @@ SLUG: bristol-myers-squibb-generation-park-housing-impact
 DATE: August 11, 2026
 READ TIME: 5 min
 EXCERPT: A $2.3 billion pharma investment just landed in northeast Houston. Here's what the Bristol Myers Squibb campus at Generation Park could mean for buyers, sellers, and investors in Humble, Kingwood, and Atascocita.
-IMAGE: /blog/bristol-myers-squibb-generation-park.png
+IMAGE: https://assets.cdn.filesafe.space/p6coQEMK9WucfxjPnduV/media/6a7b2b5072de28e6e810f660.png
 ================================================================================
 Northeast Houston just landed one of its biggest economic wins in years.
 
