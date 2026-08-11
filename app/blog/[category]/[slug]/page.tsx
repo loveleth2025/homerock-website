@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { categoryLabels } from '@/lib/content/blog'
@@ -50,6 +51,17 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
           </div>
         </Container>
       </div>
+      {article.image && (
+        <div className="w-full flex justify-center py-lg">
+          <Image
+            src={article.image}
+            alt={article.title}
+            width={1200}
+            height={630}
+            className="max-w-3xl w-full h-auto rounded-lg"
+          />
+        </div>
+      )}
       <Section>
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-3xl">
