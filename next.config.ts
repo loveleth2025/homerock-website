@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    outputFileTracingIncludes: { "/api/blog/[slug]": ["./public/blog-content/**/*"], },
+    outputFileTracingIncludes: { "/api/blog/**": ["./public/blog-content/**/*"], },
   images: {
     // Enables real Next/Image optimization (resize + AVIF/WebP) for the
     // legacy site's CDN-hosted logo/headshot instead of serving them raw.
