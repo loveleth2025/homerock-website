@@ -6,48 +6,33 @@ import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { CTA } from "@/components/sections/CTA";
 import { Button } from "@/components/ui/Button";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { podcastTranscripts } from "@/lib/content/realtors";
+import { dualLicensing } from "@/lib/content/realtors";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Agent Resources",
-  description: "Podcasts and resources for real estate agents joining HomeRock Realty.",
-  path: "/realtors/agent-resources",
+  title: "Agent Attraction",
+  description: "How HomeRock Realty's dual licensing and referral program helps agents grow, from Natalie Pilkinton.",
+  path: "/realtors/agent-attraction",
 });
 
-export default function AgentResourcesPage() {
+export default function AgentAttractionPage() {
   return (
     <>
       <BreadcrumbBar
-        items={[{ name: "Realtors", path: "/realtors" }, { name: "Agent Resources", path: "/realtors/agent-resources" }]}
+        items={[{ name: "Realtors", path: "/realtors" }, { name: "Agent Attraction", path: "/realtors/agent-attraction" }]}
       />
       <Hero
-        title="Agent Resources"
-        subheading="Podcasts, insights, and strategies for growing your real estate career"
+        title="Agent Attraction"
+        subheading="Systems for attracting and growing a team of agents"
         align="left"
       />
       <Section>
-        <Container className="max-w-3xl">
-          {podcastTranscripts.map((podcast) => (
-            <div key={podcast.slug} className="mb-3xl">
-              <h2 className="text-3xl font-bold mb-lg">{podcast.title}</h2>
-              <div className="flex gap-lg text-sm text-gray-600 mb-lg">
-                <span>📻 {podcast.episode}</span>
-                <span>👤 {podcast.guest}</span>
-                <span>📅 {podcast.date}</span>
-                <span>⏱️ {podcast.readTime} read</span>
-              </div>
-              <p className="text-lg text-gray-700 italic mb-2xl border-l-4 border-blue pl-lg">
-                {podcast.excerpt}
-              </p>
-              <div className="prose prose-sm max-w-none text-gray-700 whitespace-pre-wrap leading-relaxed">
-                {podcast.content}
-              </div>
-            </div>
-          ))}
+        <Container className="max-w-[48rem]">
+          <h2>{dualLicensing.title}</h2>
+          <p className="text-base leading-relaxed text-gray-dark mb-md">{dualLicensing.description}</p>
         </Container>
       </Section>
-      <CTA title="Ready to Join HomeRock Realty?" description="Explore opportunities to grow your real estate career with us.">
-        <Button href="/realtors/join">Learn More →</Button>
+      <CTA title="Scale Your Real Estate Business" description="Get personalized coaching and strategies to grow your real estate career.">
+        <Button href="/booking">Book Your Strategy Session →</Button>
       </CTA>
     </>
   );
