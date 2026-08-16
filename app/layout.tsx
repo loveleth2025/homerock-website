@@ -16,22 +16,6 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.brand,
-  export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.siteUrl),
-  title: {
-    default: "Natalie Pilkinton, Houston REALTOR® | Home Buyers, Sellers & Investors | Spring TX",
-    template: `%s | ${siteConfig.name} - ${siteConfig.brand}`,
-  },
-  description: "Houston REALTOR® Natalie Pilkinton guides buyers, sellers & investors through Texas real estate. Specializing in Spring, The Woodlands, Katy & more. Schedule your free consultation today. Call (832) 863-3468.",
-  keywords: "Houston REALTOR, Houston real estate agent, buy home Spring TX, sell home Houston, real estate investing Houston, HomeRock Realty",
-  authors: [{ name: siteConfig.name }],
-  creator: siteConfig.name,
-  publisher: siteConfig.brand,
-  icons: {
-    icon: '/favicon.png',
-  },
-  
-  // OpenGraph
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -48,18 +32,14 @@ export const metadata: Metadata = {
       },
     ],
   },
-  
-  // Twitter
   twitter: {
     card: "summary_large_image",
     title: "Natalie Pilkinton, Houston REALTOR®",
     description: "Expert real estate guidance for buyers, sellers & investors.",
     images: ["https://assets.cdn.filesafe.space/p6coQEMK9WucfxjPnduV/media/6a58be7f524a3ec4c61853f3.png"],
   },
-  
   icons: {
-    icon: siteConfig.faviconUrl,
-    apple: siteConfig.faviconUrl,
+    icon: '/favicon.png',
   },
 };
 
@@ -78,10 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <head>
-        {/* Canonical */}
         <link rel="canonical" href={siteConfig.siteUrl} />
-        
-        {/* Schema Markup */}
         <script {...jsonLdScriptProps(localBusinessSchema())} />
         <script {...jsonLdScriptProps(personSchema())} />
         <script {...jsonLdScriptProps(websiteSchema())} />
