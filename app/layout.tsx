@@ -16,6 +16,20 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   publisher: siteConfig.brand,
+  export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: {
+    default: "Natalie Pilkinton, Houston REALTOR® | Home Buyers, Sellers & Investors | Spring TX",
+    template: `%s | ${siteConfig.name} - ${siteConfig.brand}`,
+  },
+  description: "Houston REALTOR® Natalie Pilkinton guides buyers, sellers & investors through Texas real estate. Specializing in Spring, The Woodlands, Katy & more. Schedule your free consultation today. Call (832) 863-3468.",
+  keywords: "Houston REALTOR, Houston real estate agent, buy home Spring TX, sell home Houston, real estate investing Houston, HomeRock Realty",
+  authors: [{ name: siteConfig.name }],
+  creator: siteConfig.name,
+  publisher: siteConfig.brand,
+  icons: {
+    icon: '/favicon.png',
+  },
   
   // OpenGraph
   openGraph: {
