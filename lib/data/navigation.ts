@@ -141,8 +141,8 @@ export const siteConfig = {
     "https://assets.cdn.filesafe.space/p6coQEMK9WucfxjPnduV/media/69bd835a9d53bf7545b5be81.png",
   headshotUrl:
     "https://assets.cdn.filesafe.space/p6coQEMK9WucfxjPnduV/media/6a58be7f524a3ec4c61853f3.png",
-  phone: "(123) 456-7890",
-  phoneHref: "tel:+1234567890",
+  phone: "(832) 863-3468",
+  phoneHref: "tel:+18328633468",
   email: "natalie@homerockrealty.com",
   address: {
     line1: "HomeRock Realty",

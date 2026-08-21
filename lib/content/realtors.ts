@@ -68,7 +68,7 @@ export const founders = [
   },
   {
     name: "Natalie Pilkinton",
-    bio: "Houston-based real estate professional with over 20 years of experience across residential real estate, relocations, brokerage, coaching, and multifamily syndication. An active investor and passive owner in 900+ apartment units, Natalie co-hosts the Sugar, Spice & Spirits podcast and volunteers with the Houston Livestock Show & Rodeo Speakers Committee.",
+    bio: "Houston-based real estate professional with over 15 years of experience across residential real estate, relocations, brokerage, coaching, and multifamily syndication. An active investor and passive owner in 900+ apartment units, Natalie co-hosts the Sugar, Spice & Spirits podcast and volunteers with the Houston Livestock Show & Rodeo Speakers Committee.",
   },
 ];
 export const podcastTranscripts = [
