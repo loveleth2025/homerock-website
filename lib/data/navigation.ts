@@ -61,6 +61,10 @@ export const primaryNav: NavItem[] = [
     ],
   },
   {
+    label: "Vendors",
+    href: "/vendor-sponsorship",
+  },
+  {
     label: "Listings",
     href: "/listings",
   },
@@ -143,7 +147,7 @@ export const siteConfig = {
     "https://assets.cdn.filesafe.space/p6coQEMK9WucfxjPnduV/media/6a58be7f524a3ec4c61853f3.png",
   phone: "(832) 863-3468",
   phoneHref: "tel:+18328633468",
-  email: "natalie@homerockrealty.com",
+  email: "natalie@nataliepilkinton.com",
   address: {
     line1: "HomeRock Realty",
     line2: "Houston, TX",
