@@ -37,7 +37,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
   }
 
   const content = article.content
-  const structuredContent = Array.isArray(content) && content[0]?.heading ? content[0] : content
+  const structuredContent = Array.isArray(content) && content[0]?.paragraphs ? content : null
   return (
     <>
       <div className="w-full py-xl flex items-center justify-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a1a33 0%, #0e6bc7 50%, #0e6bc7 100%)', minHeight: '24rem' }}>
@@ -76,13 +76,15 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
               <article className="mb-3xl">
                 <p className="text-xl text-gray-700 leading-relaxed font-semibold mb-2xl italic border-l-4 border-blue pl-lg">{article.excerpt}</p>
                 <div className="text-gray-700 leading-relaxed [&_h1]:mb-lg [&_h1]:text-3xl [&_h1]:font-bold [&_h2]:mb-md [&_h2]:mt-xl [&_h2]:text-2xl [&_h2]:font-bold [&_h3]:mb-sm [&_h3]:mt-lg [&_h3]:text-xl [&_h3]:font-bold [&_p]:mb-md [&_ul]:mb-md [&_ul]:list-disc [&_ul]:pl-xl [&_blockquote]:my-lg [&_blockquote]:border-l-4 [&_blockquote]:border-gold [&_blockquote]:pl-lg [&_blockquote]:italic">
-                  {Array.isArray(content) && !structuredContent?.heading ? (
+                  {Array.isArray(content) && !structuredContent ? (
                     <PortableText value={content} />
-                  ) : structuredContent?.heading || structuredContent?.paragraphs ? (
-                    <>
-                      {structuredContent.heading && <h2>{structuredContent.heading}</h2>}
-                      {structuredContent.paragraphs?.map((paragraph: string) => <p key={paragraph}>{paragraph}</p>)}
-                    </>
+                  ) : structuredContent ? (
+                    structuredContent.map((section: { _key?: string; heading?: string; paragraphs?: string[] }) => (
+                      <div key={section._key ?? section.heading}>
+                        {section.heading && <h2>{section.heading}</h2>}
+                        {section.paragraphs?.map((paragraph: string) => <p key={paragraph}>{paragraph}</p>)}
+                      </div>
+                    ))
                   ) : null}
                 </div>
               </article>
