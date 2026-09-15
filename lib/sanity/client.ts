@@ -9,7 +9,7 @@ export const client = createClient({
 
 export async function getArticles() {
   return client.fetch(`
-    *[_type == "article" && publishedAt <= now()] | order(publishedAt desc) {
+    *[_type == "article"] | order(publishedAt desc) {
       _id,
       title,
       slug,
@@ -24,7 +24,7 @@ export async function getArticles() {
 
 export async function getArticleBySlug(slug: string) {
   return client.fetch(`
-    *[_type == "article" && slug.current == $slug && publishedAt <= now()][0] {
+    *[_type == "article" && slug.current == $slug][0] {
       _id,
       title,
       slug,
