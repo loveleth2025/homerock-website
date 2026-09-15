@@ -1,16 +1,20 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { PortableText } from '@portabletext/react'
 import { Container } from '@/components/ui/Container'
 import { Section } from '@/components/ui/Section'
 import { categoryLabels } from '@/lib/content/blog'
 import { buildMetadata } from '@/lib/seo/metadata'
 import type { Metadata } from 'next'
-import { getArticleBySlug } from '@/lib/sanity/client'
+
+async function getArticle(slug: string) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/blog/${slug}`, { cache: 'no-store' })
+  if (!res.ok) return null
+  return res.json()
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ category: string; slug: string }> }): Promise<Metadata> {
   const { category, slug } = await params
-  const article = await getArticleBySlug(slug)
+  const article = await getArticle(slug)
 
   if (!article) {
     return buildMetadata({
@@ -30,14 +34,11 @@ export async function generateMetadata({ params }: { params: Promise<{ category:
 
 export default async function ArticlePage({ params }: { params: Promise<{ category: string; slug: string }> }) {
   const { category, slug } = await params
-  const article = await getArticleBySlug(slug)
+  const article = await getArticle(slug)
 
   if (!article) {
     return <div className="p-8">Article not found</div>
   }
-
-  const content = article.content
-  const structuredContent = Array.isArray(content) && content[0]?.paragraphs ? content : null
   return (
     <>
       <div className="w-full py-xl flex items-center justify-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a1a33 0%, #0e6bc7 50%, #0e6bc7 100%)', minHeight: '24rem' }}>
@@ -75,18 +76,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ catego
               </div>
               <article className="mb-3xl">
                 <p className="text-xl text-gray-700 leading-relaxed font-semibold mb-2xl italic border-l-4 border-blue pl-lg">{article.excerpt}</p>
-                <div className="text-gray-700 leading-relaxed [&_h1]:mb-lg [&_h1]:text-3xl [&_h1]:font-bold [&_h2]:mb-md [&_h2]:mt-xl [&_h2]:text-2xl [&_h2]:font-bold [&_h3]:mb-sm [&_h3]:mt-lg [&_h3]:text-xl [&_h3]:font-bold [&_p]:mb-md [&_ul]:mb-md [&_ul]:list-disc [&_ul]:pl-xl [&_blockquote]:my-lg [&_blockquote]:border-l-4 [&_blockquote]:border-gold [&_blockquote]:pl-lg [&_blockquote]:italic">
-                  {Array.isArray(content) && !structuredContent ? (
-                    <PortableText value={content} />
-                  ) : structuredContent ? (
-                    structuredContent.map((section: { _key?: string; heading?: string; paragraphs?: string[] }) => (
-                      <div key={section._key ?? section.heading}>
-                        {section.heading && <h2>{section.heading}</h2>}
-                        {section.paragraphs?.map((paragraph: string) => <p key={paragraph}>{paragraph}</p>)}
-                      </div>
-                    ))
-                  ) : null}
-                </div>
+                <div className="text-gray-700 whitespace-pre-wrap leading-relaxed">{article.content}</div>
               </article>
               <div className="pt-2xl border-t border-gray-200">
                 <Link href={`/blog/${category}`} className="inline-flex items-center gap-sm font-semibold transition-colors hover:underline" style={{ color: '#0e6bc7' }}>← Back to {categoryLabels[category as keyof typeof categoryLabels]}</Link>
