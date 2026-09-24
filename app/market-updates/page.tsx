@@ -21,7 +21,19 @@ export default function MarketUpdatesPage() {
       <Hero title="Market Updates" subheading="Periodic snapshots of the Texas real estate market" align="left" />
 
       <Section>
-        <Container>
+        <Container><Section>
+  <Container>
+    {/* Latest Market Snapshot */}
+    <div className="mb-16">
+      <img 
+        src="/market-updates/Natalie_Pilkinton_Houston_Market_Snapshot.png" 
+        alt="Houston Real Estate Market Snapshot Week 38 2026"
+        className="w-full rounded-lg shadow-lg"
+      />
+      <p className="text-sm text-gray-600 mt-3 text-center">Week 38, 2026 | 9/15/2026 - 9/21/2026</p>
+    </div>
+
+    {/* Market Updates Grid */}
           {marketUpdates.length === 0 ? (
             <PlaceholderNotice note="No market updates have been published yet." />
           ) : (
