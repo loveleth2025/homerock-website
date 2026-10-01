@@ -124,24 +124,6 @@ export default function VendorSponsorshipPage() {
       </section>
 
       <main>
-        {/* Vendor Directory CTA Section */}
-        <section className="px-4 py-14 sm:py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold text-blue-900 sm:text-4xl mb-4">
-              Need Trusted Vendors?
-            </h2>
-            <p className="text-lg text-gray-700 mb-8">
-              Browse our vetted directory of investor-friendly service providers in one place
-            </p>
-            <a
-              href="/investors/vendors"
-              className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
-            >
-              View Vendor Directory →
-            </a>
-          </div>
-        </section>
-
         <section className="bg-gray-50 px-4 py-14 sm:py-20">
           <div className="mx-auto max-w-6xl">
             <h2 className="text-3xl font-bold text-blue-900 sm:text-4xl">
@@ -294,6 +276,30 @@ export default function VendorSponsorshipPage() {
           </a>
         </p>
       </footer>
+
+      {/* Vendor Directory CTA Section - Horizontal Layout */}
+      <section className="px-4 py-14 sm:py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+            <div className="flex-1">
+              <h2 className="text-3xl font-bold text-blue-900 sm:text-4xl mb-4">
+                Need Trusted Vendors?
+              </h2>
+              <p className="text-lg text-gray-700">
+                Browse our vetted directory of investor-friendly service providers in one place
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <a
+                href="/investors/vendors"
+                className="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors transform hover:scale-105"
+              >
+                View Vendor Directory →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
