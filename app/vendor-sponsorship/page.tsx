@@ -1,56 +1,4 @@
 export default function VendorSponsorshipPage() {
-  const vendors = [
-    {
-      category: "🔨 Contractors",
-      vendor: "Bang It Services",
-      contact: "Mike Villacis",
-      website: "www.bangitservices.net",
-      color: "from-blue-500 to-blue-600",
-    },
-    {
-      category: "💼 CPA/Business",
-      vendor: "Douglas Business Solutions",
-      contact: "Lisa Morton, Katie Shelton",
-      website: "www.DouglasBs.com",
-      color: "from-purple-500 to-purple-600",
-    },
-    {
-      category: "🏠 Flooring",
-      vendor: "Fantastic Floors",
-      contact: "Kim Maden",
-      website: "houstonfantasticfloors.com",
-      color: "from-orange-500 to-orange-600",
-    },
-    {
-      category: "🌡️ HVAC/Roofing",
-      vendor: "Texas True Comfort",
-      contact: "Chris Evans",
-      website: "www.txtrue.com",
-      color: "from-green-500 to-green-600",
-    },
-    {
-      category: "🏦 Mortgage",
-      vendor: "HomeRock Mortgage",
-      contact: "Brian Lupton",
-      website: "www.homerockmortgage.com",
-      color: "from-red-500 to-red-600",
-    },
-    {
-      category: "🏡 Realtor",
-      vendor: "John Emberton",
-      contact: "John Emberton",
-      website: null,
-      color: "from-indigo-500 to-indigo-600",
-    },
-    {
-      category: "🏡 HomeRock Realty",
-      vendor: "Natalie Pilkinton",
-      contact: "Natalie Pilkinton",
-      website: "natalie.homerockrealty.com",
-      color: "from-yellow-500 to-yellow-600",
-    },
-  ];
-
   const packages = [
     {
       name: "Listed Vendor",
@@ -176,72 +124,21 @@ export default function VendorSponsorshipPage() {
       </section>
 
       <main>
-        {/* Investor-Friendly Vendors Directory */}
-        <section className="px-4 py-14 sm:py-20 bg-white">
-          <div className="mx-auto max-w-6xl">
-            <h2 className="text-3xl font-bold text-center text-blue-900 sm:text-4xl mb-2">
-              Investor-Friendly Vendors
+        {/* Vendor Directory CTA Section */}
+        <section className="px-4 py-14 sm:py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold text-blue-900 sm:text-4xl mb-4">
+              Need Trusted Vendors?
             </h2>
-            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              Vetted service providers trusted by our investor community
+            <p className="text-lg text-gray-700 mb-8">
+              Browse our vetted directory of investor-friendly service providers in one place
             </p>
-
-            {/* Vendor Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-              {vendors.map((vendor) => (
-                <div
-                  key={vendor.vendor}
-                  className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white border border-gray-200"
-                >
-                  {/* Category Header */}
-                  <div className={`bg-gradient-to-r ${vendor.color} p-4 text-white`}>
-                    <p className="text-sm font-semibold">{vendor.category}</p>
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">
-                      {vendor.vendor}
-                    </h3>
-                    <p className="text-sm text-gray-600 mb-4">{vendor.contact}</p>
-
-                    {/* Website Button */}
-                    {vendor.website ? (
-                      <a
-                        href={`https://${vendor.website}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block w-full text-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
-                      >
-                        Visit Website →
-                      </a>
-                    ) : (
-                      <button
-                        disabled
-                        className="w-full px-4 py-2 bg-gray-300 text-gray-600 font-semibold rounded-lg cursor-not-allowed"
-                      >
-                        Contact for Info
-                      </button>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* More Vendors CTA */}
-            <div className="text-center">
-              <p className="text-gray-600 mb-4">
-                Looking for more vendors? View our complete directory below:
-              </p>
-              <a
-                href="https://docs.google.com/spreadsheets/d/1IB5gUZedMSpQXZAzZ5vXkkC5SDU2y2Pm8VAD5wHJmG8/edit?gid=1504742877#gid=1504742877"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-semibold rounded-lg transition-colors"
-              >
-                View Full Vendor Directory (Google Sheet) →
-              </a>
-            </div>
+            <a
+              href="/investors/vendors"
+              className="inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+            >
+              View Vendor Directory →
+            </a>
           </div>
         </section>
 
