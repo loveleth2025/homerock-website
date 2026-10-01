@@ -118,7 +118,7 @@ export default function VendorSponsorshipPage() {
             Partner With Our Investor Network
           </h1>
           <p className="mt-4 max-w-5xl text-base text-blue-100 sm:text-xl lg:text-2xl">
-            Connect with 327+ active real estate investors and professionals
+            Connect with active real estate investors and professionals
           </p>
         </div>
       </section>
@@ -244,7 +244,7 @@ export default function VendorSponsorshipPage() {
         >
           <div className="mx-auto max-w-4xl">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
-              Ready to Connect With 327+ Investors?
+              Ready to Connect With Our Investors?
             </h2>
             <a
               href="https://investsponsorship.nataliepilkinton.com/home--vendor--sponsorship-opportunities"

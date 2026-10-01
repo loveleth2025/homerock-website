@@ -164,7 +164,7 @@ export default function VendorDirectoryPage() {
                   Interested in Becoming a Vendor?
                 </h2>
                 <p className="text-base sm:text-lg text-gray-600 leading-relaxed px-2">
-                  Grow your business by partnering with our investor network and gaining access to 327+ active investors
+                  Grow your business by partnering with our investor network and gaining access to active investors
                 </p>
               </div>
               <a
