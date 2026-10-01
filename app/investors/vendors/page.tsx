@@ -66,8 +66,8 @@ export default function VendorDirectoryPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 px-4 py-20 text-white sm:py-32">
         <div className="mx-auto max-w-6xl">
-          <Link href="/investors" className="text-blue-200 hover:text-white mb-6 inline-block transition-colors text-sm font-semibold">
-            ← Back to Investors
+          <Link href="/vendor-sponsorship" className="text-blue-200 hover:text-white mb-6 inline-block transition-colors text-sm font-semibold">
+            ← Back to Sponsorship
           </Link>
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-5xl leading-tight flex-1">
