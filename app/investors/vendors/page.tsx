@@ -69,11 +69,11 @@ export default function VendorDirectoryPage() {
           <Link href="/investors" className="text-blue-200 hover:text-white mb-6 inline-block transition-colors text-sm font-semibold">
             ← Back to Investors
           </Link>
-          <div className="space-y-6">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl leading-tight">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-5xl leading-tight flex-1">
               Investor-Friendly<br />Vendors
             </h1>
-            <p className="text-xl text-blue-100 max-w-2xl leading-relaxed">
+            <p className="text-lg sm:text-xl text-blue-100 leading-relaxed flex-1">
               Discover vetted service providers trusted by our community
             </p>
           </div>
