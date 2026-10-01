@@ -62,43 +62,49 @@ export default function VendorDirectoryPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-gray-900">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 text-gray-900">
       {/* Hero Section */}
-      <section className="bg-blue-900 px-4 py-16 text-white sm:py-20">
-        <div className="mx-auto max-w-7xl">
-          <Link href="/investors" className="text-blue-100 hover:text-white mb-4 inline-block">
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 px-4 py-20 text-white sm:py-32">
+        <div className="mx-auto max-w-6xl">
+          <Link href="/investors" className="text-blue-200 hover:text-white mb-6 inline-block transition-colors text-sm font-semibold">
             ← Back to Investors
           </Link>
-          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl mt-4">
-            Investor-Friendly Vendors
-          </h1>
-          <p className="mt-4 max-w-3xl text-base text-blue-100 sm:text-xl lg:text-2xl">
-            Vetted service providers trusted by our investor community
-          </p>
+          <div className="space-y-6">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl leading-tight">
+              Investor-Friendly<br />Vendors
+            </h1>
+            <p className="text-xl text-blue-100 max-w-2xl leading-relaxed">
+              Discover vetted service providers trusted by our community
+            </p>
+          </div>
         </div>
       </section>
 
       <main>
         {/* Vendor Cards Grid */}
-        <section className="px-4 py-14 sm:py-20">
+        <section className="px-4 py-20 sm:py-32">
           <div className="mx-auto max-w-6xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">Featured Vendors</h2>
+              <div className="h-1 w-20 bg-blue-600 rounded-full"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {vendors.map((vendor) => (
                 <div
                   key={vendor.vendor}
-                  className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow bg-white border border-gray-200"
+                  className="rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-gray-100 hover:border-gray-200 group"
                 >
                   {/* Category Header */}
-                  <div className={`bg-gradient-to-r ${vendor.color} p-4 text-white`}>
-                    <p className="text-sm font-semibold">{vendor.category}</p>
+                  <div className={`bg-gradient-to-r ${vendor.color} p-5 text-white group-hover:shadow-inner transition-all`}>
+                    <p className="text-sm font-semibold tracking-wide uppercase">{vendor.category}</p>
                   </div>
 
                   {/* Card Content */}
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">
+                  <div className="p-8">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                       {vendor.vendor}
                     </h3>
-                    <p className="text-sm text-gray-600 mb-4">{vendor.contact}</p>
+                    <p className="text-gray-600 mb-6 text-sm font-medium">{vendor.contact}</p>
 
                     {/* Website Button */}
                     {vendor.website ? (
@@ -106,14 +112,14 @@ export default function VendorDirectoryPage() {
                         href={`https://${vendor.website}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block w-full text-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors"
+                        className="inline-block w-full text-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95"
                       >
                         Visit Website →
                       </a>
                     ) : (
                       <button
                         disabled
-                        className="w-full px-4 py-2 bg-gray-300 text-gray-600 font-semibold rounded-lg cursor-not-allowed"
+                        className="w-full px-6 py-3 bg-gray-200 text-gray-500 font-semibold rounded-lg cursor-not-allowed opacity-60"
                       >
                         Contact for Info
                       </button>
@@ -126,40 +132,48 @@ export default function VendorDirectoryPage() {
         </section>
 
         {/* More Vendors CTA */}
-        <section className="bg-gray-50 px-4 py-14 sm:py-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl font-bold text-blue-900 mb-4">
-              Looking for More Vendors?
-            </h2>
-            <p className="text-gray-600 mb-6">
-              View our complete directory of investor-friendly service providers:
-            </p>
-            <a
-              href="https://docs.google.com/spreadsheets/d/1IB5gUZedMSpQXZAzZ5vXkkC5SDU2y2Pm8VAD5wHJmG8/edit?gid=1504742877#gid=1504742877"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-semibold rounded-lg transition-colors"
-            >
-              View Full Vendor Directory (Google Sheet) →
-            </a>
+        <section className="px-4 py-20 sm:py-32 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+          <div className="mx-auto max-w-4xl">
+            <div className="text-center space-y-8">
+              <div>
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                  Looking for More Vendors?
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Browse our complete directory of investor-friendly service providers with detailed information and reviews
+                </p>
+              </div>
+              <a
+                href="https://docs.google.com/spreadsheets/d/1IB5gUZedMSpQXZAzZ5vXkkC5SDU2y2Pm8VAD5wHJmG8/edit?gid=1504742877#gid=1504742877"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-8 py-4 bg-blue-900 hover:bg-blue-800 text-white font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+              >
+                View Complete Directory (Google Sheet) →
+              </a>
+            </div>
           </div>
         </section>
 
         {/* Interested in Becoming a Vendor */}
-        <section className="px-4 py-14 sm:py-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl font-bold text-blue-900 mb-4">
-              Interested in Becoming a Vendor?
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Grow your business by partnering with our investor network
-            </p>
-            <a
-              href="/vendor-sponsorship"
-              className="inline-block px-6 py-3 bg-gold-ink hover:bg-yellow-600 text-blue-900 font-semibold rounded-lg transition-colors"
-            >
-              Explore Vendor Sponsorship Options →
-            </a>
+        <section className="px-4 py-20 sm:py-32">
+          <div className="mx-auto max-w-4xl">
+            <div className="text-center space-y-8">
+              <div>
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                  Interested in Becoming a Vendor?
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  Grow your business by partnering with our investor network and gaining access to 327+ active investors
+                </p>
+              </div>
+              <a
+                href="/vendor-sponsorship"
+                className="inline-block px-8 py-4 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-blue-900 font-semibold rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+              >
+                Explore Vendor Sponsorship Options →
+              </a>
+            </div>
           </div>
         </section>
       </main>
