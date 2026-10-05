@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { categoryLabels, blogCategories, type BlogCategory } from "@/lib/content/blog";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { getArticles } from "@/lib/sanity/client";
+import { mergeWithFilePosts } from "@/lib/content/blogFiles";
 
 export async function generateStaticParams() {
   return blogCategories.map((category) => ({ category }));
@@ -32,7 +33,7 @@ export default async function CategoryPage({
 }) {
   const { category } = await params;
   const articles = await getArticles();
-  const typedArticles = articles as any[];
+  const typedArticles = mergeWithFilePosts(articles);
   const categoryArticles = typedArticles?.filter((article: any) => article.category === category) || [];
 
   return (
