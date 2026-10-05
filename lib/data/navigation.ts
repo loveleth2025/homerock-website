@@ -127,7 +127,7 @@ export const footerNav = {
   connect: {
     title: "Connect",
     links: [
-      { label: "Facebook", href: "https://facebook.com/nataliepilkinton" },
+      { label: "Facebook", href: "https://www.facebook.com/natalie.pilkinton.1" },
       { label: "Instagram", href: "https://instagram.com/nataliepilkinton" },
       { label: "LinkedIn", href: "https://www.linkedin.com/in/nataliepilkinton1" },
       { label: "YouTube", href: "https://www.youtube.com/channel/UCuXN_TctvXKZFs2ImP_sCBA" },
@@ -181,7 +181,7 @@ export const siteConfig = {
   /** Natalie's official HAR member profile — the real, MLS-backed source for her current listings. */
   harProfileUrl: "https://www.har.com/web/nataliepilkinton",
   social: {
-    facebook: "https://facebook.com/nataliepilkinton",
+    facebook: "https://www.facebook.com/natalie.pilkinton.1",
     instagram: "https://instagram.com/nataliepilkinton",
     linkedin: "https://www.linkedin.com/in/nataliepilkinton1",
     youtube: "https://www.youtube.com/channel/UCuXN_TctvXKZFs2ImP_sCBA",
