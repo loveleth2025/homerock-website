@@ -40,8 +40,8 @@ export default function PrivacyPolicyPage() {
               strategy session.
             </li>
             <li className="mb-md">
-              <strong>Booking information</strong> &mdash; when you schedule a session through our Outlook booking
-              link, that scheduling data is collected and processed by Microsoft/Outlook under their own privacy
+              <strong>Booking information</strong> &mdash; when you schedule a session through our Calendly booking
+              link, that scheduling data is collected and processed by Calendly under their own privacy
               policy, not ours.
             </li>
             <li className="mb-md">

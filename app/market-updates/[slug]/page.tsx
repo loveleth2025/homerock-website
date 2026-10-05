@@ -148,7 +148,7 @@ export default async function MarketUpdatePage({ params }: { params: Promise<{ s
                     Helping buyers, sellers, and investors achieve their real estate goals in Houston.
                   </p>
                   <Link
-                    href="https://outlook.office.com/bookwithme/user/f39b29ca72d4472699897db031f61fd7@homerockrealty.com/meetingtype/OLdPZ9Q4HUKXNbgzgjnasg2"
+                    href="https://calendly.com/nataliepilkinton/30min"
                     className="w-full px-lg py-sm rounded font-semibold transition-colors text-center"
                     style={{ backgroundColor: "#c9a227", color: "#0a1a33" }}
                   >
