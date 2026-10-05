@@ -6,6 +6,7 @@ import { SearchBar } from "@/components/forms/SearchBar";
 import { categoryLabels, blogCategories } from "@/lib/content/blog";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { getArticles } from "@/lib/sanity/client";
+import { mergeWithFilePosts } from "@/lib/content/blogFiles";
 
 export const revalidate = 0;
 
@@ -17,7 +18,7 @@ export const metadata: Metadata = buildMetadata({
 
 export default async function BlogPage() {
   const articles = await getArticles();
-  const typedArticles = (articles as any[]) ?? [];
+  const typedArticles = mergeWithFilePosts(articles);
   const [featured, ...rest] = typedArticles;
 
   return (
@@ -77,7 +78,7 @@ export default async function BlogPage() {
                       {featured.excerpt}
                     </p>
                     <div className="flex items-center gap-lg text-xs mb-lg" style={{ color: "#d1d5db" }}>
-                      <span>{new Date(featured.publishedAt).toLocaleDateString()}</span>
+                      <span>{featured.publishedAt ? new Date(featured.publishedAt).toLocaleDateString() : null}</span>
                       <span>{featured.readTime}</span>
                     </div>
                     <span

@@ -3,7 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/lib/data/navigation";
-import { jsonLdScriptProps, localBusinessSchema, personSchema, websiteSchema } from "@/lib/seo/schema";
+import { jsonLdScriptProps, siteGraphSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -58,10 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <head>
-        <link rel="canonical" href={siteConfig.siteUrl} />
-        <script {...jsonLdScriptProps(localBusinessSchema())} />
-        <script {...jsonLdScriptProps(personSchema())} />
-        <script {...jsonLdScriptProps(websiteSchema())} />
+        <script {...jsonLdScriptProps(siteGraphSchema())} />
       </head>
       <body className="min-h-full flex flex-col">
         <a href="#main-content" className="skip-link">

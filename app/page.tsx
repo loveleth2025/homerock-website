@@ -17,36 +17,39 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "Natalie Pilkinton, Houston REALTOR® | Home Buyers, Sellers & Investors | Spring TX",
   description:
-    "Houston REALTOR® Natalie Pilkinton guides buyers, sellers & investors through Texas real estate. Specializing in Spring, The Woodlands, Katy & more. Schedule your free consultation today. Call (832) 863-3468.",
+    "Houston REALTOR®, real estate investor and educator Natalie Pilkinton helps buyers, sellers and investors across Spring, The Woodlands and greater Houston. 20+ years of experience.",
   path: "/",
 });
 
-const learningPaths = [
+/** The four audiences Natalie serves, each linking into its Academy. */
+const audiences = [
   {
     icon: "🏠",
-    title: "Home Buyer Academy",
-    description: "Master the home buying process from pre-approval to closing",
+    title: "Home Buyers",
+    description: "First-time, relocation and new construction buyers, and anyone working through financing.",
     href: "/buyers",
   },
   {
     icon: "🔑",
-    title: "Home Seller Academy",
-    description: "Learn how to maximize your sale price and timeline",
+    title: "Home Sellers",
+    description: "Pricing, marketing, negotiation and a selling strategy built around your timeline.",
     href: "/sellers",
   },
   {
     icon: "📈",
-    title: "Investor Academy",
-    description: "Build wealth through strategic real estate investments",
+    title: "Real Estate Investors",
+    description: "Property analysis, cash flow, financing and rental strategy from a Realtor who invests herself.",
     href: "/investors",
   },
   {
     icon: "🚀",
-    title: "Realtor Growth Academy",
-    description: "Scale your real estate business with proven systems",
+    title: "Realtors",
+    description: "Business growth, systems, coaching and training for agents ready to scale.",
     href: "/realtors",
   },
 ];
+
+const marketsServed = ["Spring", "Houston", "The Woodlands", "Tomball", "Conroe", "Cypress", "Magnolia", "Montgomery"];
 
 const featuredResources = [
   {
@@ -71,9 +74,9 @@ export default function HomePage() {
     <>
       <Hero
         cinematic
-        eyebrow="Texas Realtor · Investor · Educator"
-        title="Master the Art of Real Estate"
-        subheading="Actionable, no-fluff strategies for buying, selling, and investing — taught by someone who's actually built wealth doing it."
+        eyebrow="Master the Art of Real Estate"
+        title="Houston Realtor, Real Estate Investor & Educator"
+        subheading="Helping buyers, sellers and investors make smarter real estate decisions across Houston, Spring, The Woodlands and surrounding Texas markets, with no-fluff strategies from someone who has built wealth doing it."
       >
         <Button href="/buyers" size="large">
           Start Learning
@@ -94,7 +97,13 @@ export default function HomePage() {
       <Section tone="light">
         <Container className="text-center">
           <Reveal>
-            <SectionTitle align="center">What Do You Want to Learn?</SectionTitle>
+            <SectionTitle align="center">Who I Help</SectionTitle>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <p className="max-w-[42rem] mx-auto text-gray-dark">
+              I&rsquo;m Natalie Pilkinton, a REALTOR® with HomeRock Realty and a real estate investor with 20+ years in
+              the Houston market. Pick where you are and start learning.
+            </p>
           </Reveal>
           <Reveal delay={0.1}>
             <div className="my-2xl">
@@ -103,7 +112,7 @@ export default function HomePage() {
           </Reveal>
 
           <RevealGroup className="grid grid-cols-4 max-md:grid-cols-2 max-sm:grid-cols-1 gap-lg text-left">
-            {learningPaths.map((path) => (
+            {audiences.map((path) => (
               <RevealItem key={path.href}>
                 <TiltCard>
                   <LearningPathCard {...path} />
@@ -111,6 +120,27 @@ export default function HomePage() {
               </RevealItem>
             ))}
           </RevealGroup>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container className="text-center">
+          <Reveal>
+            <SectionTitle align="center">Areas I Serve</SectionTitle>
+            <p className="max-w-[42rem] mx-auto text-gray-dark mb-lg">
+              Based in Spring and working across greater Houston and Montgomery County.
+            </p>
+            <ul className="flex flex-wrap justify-center gap-sm list-none p-0 mb-lg">
+              {marketsServed.map((market) => (
+                <li key={market} className="px-md py-xs rounded-full border border-gray-light text-navy text-sm font-semibold">
+                  {market}
+                </li>
+              ))}
+            </ul>
+            <Button href="/market-updates" variant="secondary">
+              See the latest Houston market update →
+            </Button>
+          </Reveal>
         </Container>
       </Section>
 

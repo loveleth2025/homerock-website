@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo/metadata";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Vendor Sponsorship: Investor Meetup",
+  description:
+    "Sponsor Natalie Pilkinton's Spring/Woodlands real estate investor network. Listed vendor, event sponsor and exclusive category packages for investor-friendly businesses.",
+  path: "/vendor-sponsorship",
+});
+
 export default function VendorSponsorshipPage() {
   const packages = [
     {

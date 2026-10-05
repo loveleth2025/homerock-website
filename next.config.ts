@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      // The page used to live under this folder name while nav, sitemap and canonical all pointed at /agent-attraction.
+      { source: "/realtors/agent-resources", destination: "/realtors/agent-attraction", permanent: true },
+    ];
+  },
     outputFileTracingIncludes: { "/api/blog/**": ["./public/blog-content/**/*"], },
   images: {
     // Enables real Next/Image optimization (resize + AVIF/WebP) for the

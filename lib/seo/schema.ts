@@ -16,64 +16,118 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
   };
 }
 
-export function localBusinessSchema() {
+/** Stable @id values so every page's JSON-LD points at the same three entities. */
+export const schemaIds = {
+  person: `${siteConfig.siteUrl}/#natalie`,
+  agent: `${siteConfig.siteUrl}/#agent`,
+  brokerage: `${siteConfig.siteUrl}/#homerock`,
+  website: `${siteConfig.siteUrl}/#website`,
+};
+
+const sameAs = [
+  siteConfig.harProfileUrl,
+  siteConfig.social.linkedin,
+  siteConfig.social.youtube,
+  siteConfig.social.facebook,
+  siteConfig.social.instagram,
+];
+
+const postalAddress = {
+  "@type": "PostalAddress",
+  streetAddress: siteConfig.address.street,
+  addressLocality: siteConfig.address.city,
+  addressRegion: siteConfig.address.region,
+  postalCode: siteConfig.address.postalCode,
+  addressCountry: siteConfig.address.country,
+};
+
+/** Natalie as a person: the entity her content, profiles and expertise attach to. */
+export function personSchema() {
   return {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: siteConfig.brand,
-    founder: siteConfig.name,
-    url: siteConfig.siteUrl,
+    "@type": "Person",
+    "@id": schemaIds.person,
+    name: siteConfig.name,
+    url: `${siteConfig.siteUrl}/about`,
+    image: siteConfig.headshotUrl,
+    jobTitle: "REALTOR®, Real Estate Investor & Educator",
+    description: `Houston-area REALTOR®, real estate investor and educator with ${siteConfig.yearsExperience} years of experience helping buyers, sellers and investors in Spring, Houston and The Woodlands.`,
+    worksFor: { "@id": schemaIds.brokerage },
+    address: postalAddress,
     telephone: siteConfig.phone,
     email: siteConfig.email,
+    knowsAbout: [
+      "Residential real estate",
+      "First-time home buyers",
+      "New construction homes",
+      "Home selling",
+      "Real estate investing",
+      "Multifamily investing",
+      "Passive real estate investing",
+      "Real estate education",
+      "Realtor coaching",
+    ],
+    hasCredential: {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "license",
+      name: `Texas Real Estate Sales Agent License #${siteConfig.licenseNumber}`,
+      recognizedBy: { "@type": "GovernmentOrganization", name: "Texas Real Estate Commission", url: "https://www.trec.texas.gov" },
+    },
+    sameAs,
+  };
+}
+
+/** Natalie's real estate practice (the local-business entity). */
+export function localBusinessSchema() {
+  return {
+    "@type": "RealEstateAgent",
+    "@id": schemaIds.agent,
+    name: siteConfig.name,
+    url: siteConfig.siteUrl,
+    image: siteConfig.headshotUrl,
+    logo: siteConfig.logoUrl,
+    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    address: postalAddress,
+    areaServed: siteConfig.areasServed.map((city) => ({ "@type": "City", name: `${city}, TX` })),
+    founder: { "@id": schemaIds.person },
+    parentOrganization: { "@id": schemaIds.brokerage },
+    sameAs,
+  };
+}
+
+/** HomeRock Realty, the sponsoring brokerage. */
+export function brokerageSchema() {
+  return {
+    "@type": "Organization",
+    "@id": schemaIds.brokerage,
+    name: siteConfig.brokerage.name,
+    url: siteConfig.brokerage.url,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Houston",
-      addressRegion: "TX",
+      streetAddress: siteConfig.brokerage.street,
+      addressLocality: siteConfig.brokerage.city,
+      addressRegion: siteConfig.brokerage.region,
+      postalCode: siteConfig.brokerage.postalCode,
       addressCountry: "US",
     },
-    sameAs: [
-      siteConfig.social.facebook,
-      siteConfig.social.instagram,
-      siteConfig.social.linkedin,
-      siteConfig.social.youtube,
-    ],
   };
 }
 
 export function websiteSchema() {
   return {
-    "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": schemaIds.website,
     name: `${siteConfig.name} | ${siteConfig.brand}`,
     url: siteConfig.siteUrl,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${siteConfig.siteUrl}/blog?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
-    },
+    publisher: { "@id": schemaIds.person },
   };
 }
 
-export function personSchema() {
+/** The sitewide entity graph, emitted once in the root layout. */
+export function siteGraphSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "Person",
-    name: siteConfig.name,
-    jobTitle: ["Texas Realtor", "Real Estate Investor", "Educator", "Podcast Host"],
-    worksFor: {
-      "@type": "Organization",
-      name: siteConfig.brand,
-    },
-    url: siteConfig.siteUrl,
-    sameAs: [
-      siteConfig.social.facebook,
-      siteConfig.social.instagram,
-      siteConfig.social.linkedin,
-      siteConfig.social.youtube,
-    ],
+    "@graph": [personSchema(), localBusinessSchema(), brokerageSchema(), websiteSchema()],
   };
 }
 
@@ -96,12 +150,11 @@ export function articleSchema(input: {
     image: input.image ?? siteConfig.headshotUrl,
     author: {
       "@type": "Person",
+      "@id": schemaIds.person,
       name: siteConfig.name,
+      url: `${siteConfig.siteUrl}/about`,
     },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.brand,
-    },
+    publisher: { "@id": schemaIds.person },
   };
 }
 

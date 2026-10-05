@@ -62,7 +62,28 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-white/10 pt-lg pb-lg flex justify-between items-center text-sm text-cream/70 max-md:flex-col max-md:gap-md max-md:text-center">
+        {/* Name, address, phone and brokerage disclosures — kept identical to schema and external profiles */}
+        <div className="border-t border-white/10 pt-lg text-sm text-cream/70 max-md:text-center">
+          <p className="mb-xs">
+            <span className="text-cream font-semibold">{siteConfig.name}</span>, REALTOR® · {siteConfig.brand} ·{" "}
+            {siteConfig.address.street}, {siteConfig.address.city}, {siteConfig.address.region} {siteConfig.address.postalCode} ·{" "}
+            <a href={siteConfig.phoneHref} className="text-cream/85 hover:text-gold transition-colors">
+              {siteConfig.phone}
+            </a>
+          </p>
+          <p>
+            TREC License #{siteConfig.licenseNumber} ·{" "}
+            <a href={siteConfig.brokerage.iabsUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-gold transition-colors">
+              Information About Brokerage Services
+            </a>{" "}
+            ·{" "}
+            <a href={siteConfig.brokerage.consumerProtectionUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-gold transition-colors">
+              TREC Consumer Protection Notice
+            </a>
+          </p>
+        </div>
+
+        <div className="pt-lg pb-lg flex justify-between items-center text-sm text-cream/70 max-md:flex-col max-md:gap-md max-md:text-center">
           <div>&copy; {new Date().getFullYear()} Natalie Pilkinton | HomeRock Realty. All rights reserved.</div>
           <div className="flex gap-lg">
             <Link href="/privacy-policy" className="text-cream/70 hover:text-gold transition-colors">
