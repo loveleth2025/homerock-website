@@ -7,6 +7,7 @@ import { FAQ } from "@/components/sections/FAQ";
 import { LearningModuleCard } from "@/components/cards/LearningModuleCard";
 import { ResourceCard } from "@/components/cards/ResourceCard";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BuyerSeminarCallout } from "@/components/content/BuyerSeminarCallout";
 import { buyerJourney, buyerFaq, buyerModules } from "@/lib/content/buyers";
 
 export const metadata: Metadata = buildMetadata({
@@ -80,6 +81,11 @@ export default function BuyersPage() {
               <ResourceCard key={resource.title} {...resource} />
             ))}
           </div>
+        </Container>
+      </Section>
+      <Section>
+        <Container className="max-w-[52rem]">
+          <BuyerSeminarCallout withSchema />
         </Container>
       </Section>
     </AcademyLayout>

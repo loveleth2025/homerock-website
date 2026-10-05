@@ -6,6 +6,7 @@ import { BreadcrumbBar } from "@/components/layout/BreadcrumbBar";
 import { CTA } from "@/components/sections/CTA";
 import { Button } from "@/components/ui/Button";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BuyerSeminarCallout } from "@/components/content/BuyerSeminarCallout";
 import { buyerFaq } from "@/lib/content/buyers";
 
 export const metadata: Metadata = buildMetadata({
@@ -33,6 +34,12 @@ export default function NewConstructionPage() {
         <Container className="max-w-[48rem]">
           <h2>{newConstructionFaq.question}</h2>
           <p className="text-base leading-relaxed text-gray-dark mb-md">{newConstructionFaq.answer}</p>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container className="max-w-[52rem]">
+          <BuyerSeminarCallout />
         </Container>
       </Section>
 

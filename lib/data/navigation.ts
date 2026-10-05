@@ -179,6 +179,11 @@ export const siteConfig = {
     name: "Spring/Woodlands Passive & Active Real Estate Investing",
     url: "https://www.meetup.com/passiveandactiveinvestors/",
   },
+  /** Natalie's Eventbrite organizer page for home buyer seminars. */
+  eventbrite: {
+    organizerId: "31586767379",
+    url: "https://www.eventbrite.com/o/31586767379",
+  },
   /** Markets Natalie serves, used in schema areaServed. */
   areasServed: ["Spring", "Houston", "The Woodlands", "Tomball", "Conroe", "Cypress", "Magnolia", "Montgomery"],
   bookingUrl:
