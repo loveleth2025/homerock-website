@@ -40,6 +40,7 @@ const staticPaths = [
   "/investors/multifamily",
   "/investors/brrrr",
   "/investors/private-lending",
+  "/investors/dscr-loans-texas",
   "/investors/case-studies",
   "/investors/vendors",
   "/vendor-sponsorship",

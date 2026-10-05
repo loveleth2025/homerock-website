@@ -8,11 +8,8 @@ export const placeholderPaths = [
   "/sellers/pricing",
   "/sellers/marketing",
   "/sellers/staging",
-  "/investors/beginner",
   "/investors/passive",
   "/investors/multifamily",
-  "/investors/brrrr",
-  "/investors/private-lending",
   "/investors/case-studies",
 ] as const;
 
