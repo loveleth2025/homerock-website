@@ -19,17 +19,10 @@ const EP56 = {
   href: "/podcast/transcripts/ep56-hard-money-lending-explained",
 };
 
-/** Natalie's recommended lenders (confirmed by Love, Oct 5, 2026; details from the companies' own sites). */
-const jetLending = {
-  company: "Jet Lending",
-  person: "Eddie Gant, co-founder",
-  role: "Hard money & private lending",
-  description:
-    "Asset-based short-term loans for investors buying and rehabbing in Houston, Austin and surrounding Texas markets. Lending since 2004, with 3,700+ loans closed. Eddie has bought 1,700+ houses himself and joined Natalie on [podcast episode 56](/podcast/transcripts/ep56-hard-money-lending-explained).",
-  website: "https://www.jetlending.com",
-  phone: "(281) 872-7800",
-};
-
+/**
+ * Natalie's recommended lender (confirmed by Love, Oct 5, 2026; details from HomeRock Mortgage's site).
+ * Jet Lending is mentioned only through podcast episode 56, not as a formal recommendation.
+ */
 const homeRockMortgage = {
   company: "HomeRock Mortgage",
   person: "Brian Lupton, Mortgage Loan Originator",
@@ -41,7 +34,7 @@ const homeRockMortgage = {
 };
 
 const lenderDisclosure =
-  "These are lenders Natalie personally recommends; you're free to choose any lender, and you should compare terms. HomeRock Mortgage is part of the HomeRock Group, the same group of companies as HomeRock Realty, Natalie's brokerage. Loan programs, rates and approval are set by each lender.";
+  "HomeRock Mortgage is part of the HomeRock Group, the same group of companies as HomeRock Realty, Natalie's brokerage. You're free to choose any lender, and you should compare terms. Loan programs, rates and approval are set by the lender.";
 
 const investorBooking = {
   title: "Ready to Run the Numbers on Your First Deal?",
@@ -384,8 +377,8 @@ export const dscrGuide: AcademyGuide = {
   },
   recommended: {
     heading: "Where Natalie sends investors for DSCR loans",
-    intro: "Natalie works with these lenders on investor financing. Compare their terms with any lender you're considering.",
-    providers: [homeRockMortgage, jetLending],
+    intro: "Natalie works with Brian Lupton at HomeRock Mortgage on investor financing. Compare his terms with any lender you're considering.",
+    providers: [homeRockMortgage],
     disclosure: lenderDisclosure,
   },
   faqs: [
@@ -494,10 +487,10 @@ export const privateLendingGuide: AcademyGuide = {
     source: EP45,
   },
   recommended: {
-    heading: "Lenders Natalie trusts",
+    heading: "Who Natalie works with on financing",
     intro:
-      "Natalie sends investors to lenders she has worked with and knows: one for the short-term purchase and rehab money, and one for the long-term loan you refinance into.",
-    providers: [jetLending, homeRockMortgage],
+      "For the long-term loan you refinance into, including DSCR loans, Natalie works with Brian Lupton at HomeRock Mortgage. To hear how short-term hard money works from a Houston lender's side, listen to Natalie's conversation with Eddie Gant of Jet Lending on [podcast episode 56](/podcast/transcripts/ep56-hard-money-lending-explained).",
+    providers: [homeRockMortgage],
     disclosure: lenderDisclosure,
   },
   faqs: [
@@ -519,7 +512,7 @@ export const privateLendingGuide: AcademyGuide = {
     {
       question: "Does Natalie offer private lending?",
       answer:
-        "No. Natalie refers investors to lenders she trusts, such as Jet Lending for short-term hard money and HomeRock Mortgage for long-term and DSCR financing. This page is education only and isn't an offer to lend or invest. To talk through a specific deal, [book a strategy session](/booking).",
+        "No. For long-term and DSCR financing, Natalie works with Brian Lupton at HomeRock Mortgage. This page is education only and isn't an offer to lend or invest. To talk through a specific deal, [book a strategy session](/booking).",
     },
   ],
   related: [
@@ -529,7 +522,6 @@ export const privateLendingGuide: AcademyGuide = {
     { label: "Investor-friendly vendors", href: "/investors/vendors", description: "Lenders, title and contractors who work with investors." },
   ],
   sources: [
-    { label: "Jet Lending: Eddie Gant", url: "https://www.jetlending.com/team/eddie-gant" },
     { label: "HomeRock Mortgage: Loan officers", url: "https://www.homerockmortgage.com/loan-officer" },
     { label: "Barsalou Law: Hard money loans in Texas", url: "https://www.barsalou-law.com/what-is-a-hard-money-loan-in-texas-understanding-private-real-estate-financing-high-interest-rates-and-the-law" },
     { label: "Supreme Court of Texas: American Pearl Group v. National Payment Systems, No. 24-0759 (May 23, 2025)", url: "https://www.txcourts.gov/media/1460588/240759.pdf" },
