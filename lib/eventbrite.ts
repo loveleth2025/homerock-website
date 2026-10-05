@@ -73,25 +73,63 @@ export function mapEventbriteEvents(events: EventbriteEvent[], now = new Date())
     .sort((a, b) => Date.parse(a.utcStart) - Date.parse(b.utcStart));
 }
 
+const API = "https://www.eventbriteapi.com/v3";
+
+type Lookup = { step: string; status: number | string; events?: number };
+
+async function getJson<T>(path: string, token: string, fresh = false): Promise<{ status: number; data?: T }> {
+  const res = await fetch(`${API}${path}`, {
+    headers: { Authorization: `Bearer ${token}` },
+    ...(fresh ? { cache: "no-store" as const } : { next: { revalidate: 3600 } }),
+    signal: AbortSignal.timeout(5000),
+  });
+  if (!res.ok) return { status: res.status };
+  return { status: res.status, data: (await res.json()) as T };
+}
+
+/**
+ * Upcoming live events for Natalie's organizer profile. Tries the token owner's
+ * organization first (the current Eventbrite API), then the older per-organizer
+ * endpoint. Returns a trace of each step for the status check.
+ */
+export async function fetchSeminarEvents(fresh = false): Promise<{ events: EventbriteEvent[]; trace: Lookup[] }> {
+  const token = process.env.EVENTBRITE_TOKEN;
+  const trace: Lookup[] = [];
+  if (!token) return { events: [], trace: [{ step: "token", status: "missing" }] };
+  const organizerId = siteConfig.eventbrite.organizerId;
+  const query = "status=live&order_by=start_asc&time_filter=current_future&expand=venue";
+
+  try {
+    const orgs = await getJson<{ organizations?: { id: string }[] }>("/users/me/organizations/", token, fresh);
+    trace.push({ step: "organizations", status: orgs.status, events: orgs.data?.organizations?.length });
+    for (const org of orgs.data?.organizations ?? []) {
+      const res = await getJson<{ events?: (EventbriteEvent & { organizer_id?: string })[] }>(
+        `/organizations/${org.id}/events/?${query}`,
+        token,
+        fresh,
+      );
+      const mine = (res.data?.events ?? []).filter((e) => !e.organizer_id || e.organizer_id === organizerId);
+      trace.push({ step: "organization-events", status: res.status, events: mine.length });
+      if (mine.length) return { events: mine, trace };
+    }
+
+    const legacy = await getJson<{ events?: EventbriteEvent[] }>(
+      `/organizers/${organizerId}/events/?status=live&order_by=start_asc&expand=venue`,
+      token,
+      fresh,
+    );
+    trace.push({ step: "organizer-events", status: legacy.status, events: legacy.data?.events?.length });
+    return { events: legacy.data?.events ?? [], trace };
+  } catch (error) {
+    trace.push({ step: "error", status: error instanceof Error ? error.name : "unknown" });
+    return { events: [], trace };
+  }
+}
+
 /** The next upcoming seminar, or null if none is posted, no token is set, or Eventbrite can't be reached. */
 export async function getNextBuyerSeminar(): Promise<BuyerSeminar | null> {
-  const token = process.env.EVENTBRITE_TOKEN;
-  if (!token) return null;
-  try {
-    const url =
-      `https://www.eventbriteapi.com/v3/organizers/${siteConfig.eventbrite.organizerId}/events/` +
-      "?status=live&order_by=start_asc&expand=venue";
-    const res = await fetch(url, {
-      headers: { Authorization: `Bearer ${token}` },
-      next: { revalidate: 3600 },
-      signal: AbortSignal.timeout(5000),
-    });
-    if (!res.ok) return null;
-    const data = (await res.json()) as { events?: EventbriteEvent[] };
-    return mapEventbriteEvents(data.events ?? [])[0] ?? null;
-  } catch {
-    return null;
-  }
+  const { events } = await fetchSeminarEvents();
+  return mapEventbriteEvents(events)[0] ?? null;
 }
 
 /** "Saturday, October 24 · 2:00–4:00 PM CT" from the event's local times. */
