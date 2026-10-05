@@ -178,6 +178,37 @@ export function AcademyGuidePage({ guide }: { guide: AcademyGuide }) {
             </aside>
           )}
 
+          {guide.recommended && (
+            <section className="mb-2xl">
+              <h2>{guide.recommended.heading}</h2>
+              <p>
+                <Rich text={guide.recommended.intro} />
+              </p>
+              <ul className="grid grid-cols-2 max-md:grid-cols-1 gap-lg list-none p-0">
+                {guide.recommended.providers.map((provider) => (
+                  <li key={provider.company} className="border border-gray-light border-l-4 border-l-gold rounded-xs p-lg">
+                    <p className="text-xs uppercase tracking-[0.1em] text-gold-ink font-semibold mb-xs">{provider.role}</p>
+                    <h3 className="text-xl mt-0 mb-xs">{provider.company}</h3>
+                    <p className="text-sm font-semibold text-navy mb-sm">{provider.person}</p>
+                    <p className="text-sm text-gray-dark">
+                      <Rich text={provider.description} />
+                    </p>
+                    <p className="text-sm mb-0">
+                      {provider.website && (
+                        <a href={provider.website} target="_blank" rel="noopener noreferrer" className="text-gold-ink underline underline-offset-2 hover:text-navy">
+                          {provider.website.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+                        </a>
+                      )}
+                      {provider.phone && <span className="text-gray-dark"> · {provider.phone}</span>}
+                    </p>
+                    {provider.license && <p className="text-xs text-gray-dark mt-xs mb-0">{provider.license}</p>}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-xs text-gray-dark italic mt-md">{guide.recommended.disclosure}</p>
+            </section>
+          )}
+
           <section className="mb-2xl">
             <h2>Frequently asked questions</h2>
             {guide.faqs.map((faq) => (

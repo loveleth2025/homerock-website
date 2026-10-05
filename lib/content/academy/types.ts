@@ -18,6 +18,18 @@ export type GuideSection = {
 
 export type GuideFaq = { question: string; answer: string };
 
+/** A provider Natalie personally recommends (lender, broker, vendor). */
+export type RecommendedProvider = {
+  company: string;
+  person: string;
+  role: string;
+  description: string;
+  website?: string;
+  phone?: string;
+  /** e.g. "NMLS #2035744" */
+  license?: string;
+};
+
 export type AcademyGuide = {
   /** Route path, e.g. "/investors/brrrr". */
   path: string;
@@ -35,6 +47,8 @@ export type AcademyGuide = {
   sections: GuideSection[];
   /** First-person perspective from Natalie, from her own podcast/teaching. */
   natalieTake?: { heading: string; paragraphs: string[]; source?: { label: string; href: string } };
+  /** "Who Natalie works with" — always shown with its disclosure. */
+  recommended?: { heading: string; intro: string; providers: RecommendedProvider[]; disclosure: string };
   faqs: GuideFaq[];
   related: { label: string; href: string; description: string }[];
   sources?: { label: string; url: string }[];

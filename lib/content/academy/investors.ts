@@ -14,6 +14,35 @@ const EP45 = {
   href: "/podcast/transcripts/ep45-is-10-rental-properties-enough-to-retire",
 };
 
+const EP56 = {
+  label: "Sugar, Spice & Spirits episode 56: Hard Money Lending Explained, with Eddie Gant of Jet Lending",
+  href: "/podcast/transcripts/ep56-hard-money-lending-explained",
+};
+
+/** Natalie's recommended lenders (confirmed by Love, Oct 5, 2026; details from the companies' own sites). */
+const jetLending = {
+  company: "Jet Lending",
+  person: "Eddie Gant, co-founder",
+  role: "Hard money & private lending",
+  description:
+    "Asset-based short-term loans for investors buying and rehabbing in Houston, Austin and surrounding Texas markets. Lending since 2004, with 3,700+ loans closed. Eddie has bought 1,700+ houses himself and joined Natalie on [podcast episode 56](/podcast/transcripts/ep56-hard-money-lending-explained).",
+  website: "https://www.jetlending.com",
+  phone: "(281) 872-7800",
+};
+
+const homeRockMortgage = {
+  company: "HomeRock Mortgage",
+  person: "Brian Lupton, Mortgage Loan Originator",
+  role: "Mortgage broker",
+  description:
+    "Long-term financing for investors and homebuyers, including DSCR loans for rentals and refinances out of short-term debt. Brian co-presents Natalie's Home Buyer Masterclass.",
+  website: "https://www.homerockmortgage.com",
+  license: "NMLS #2035744 · Company NMLS #1691956",
+};
+
+const lenderDisclosure =
+  "These are lenders Natalie personally recommends; you're free to choose any lender, and you should compare terms. HomeRock Mortgage is part of the HomeRock Group, the same group of companies as HomeRock Realty, Natalie's brokerage. Loan programs, rates and approval are set by each lender.";
+
 const investorBooking = {
   title: "Ready to Run the Numbers on Your First Deal?",
   description: "Book a free strategy session and Natalie will walk through your goals, your budget and what a deal needs to look like.",
@@ -353,6 +382,12 @@ export const dscrGuide: AcademyGuide = {
     ],
     source: EP45,
   },
+  recommended: {
+    heading: "Where Natalie sends investors for DSCR loans",
+    intro: "Natalie works with these lenders on investor financing. Compare their terms with any lender you're considering.",
+    providers: [homeRockMortgage, jetLending],
+    disclosure: lenderDisclosure,
+  },
   faqs: [
     {
       question: "What is a good DSCR for a rental property?",
@@ -386,6 +421,7 @@ export const dscrGuide: AcademyGuide = {
   sources: [
     { label: "Griffin Funding: DSCR loan requirements (2026)", url: "https://griffinfunding.com/blog/dscr-loans/dscr-loan-requirements/" },
     { label: "Munoz Ghezlan: DSCR loan seasoning requirements (May 2026)", url: "https://www.munozghezlan.com/blog/dscr-loan-seasoning-requirements" },
+    { label: "HomeRock Mortgage: Loan officers", url: "https://www.homerockmortgage.com/loan-officer" },
   ],
   disclaimer:
     "This guide is education, not lending advice. DSCR programs vary by lender and change often; compare offers and read the prepayment terms before you commit.",
@@ -457,6 +493,13 @@ export const privateLendingGuide: AcademyGuide = {
     ],
     source: EP45,
   },
+  recommended: {
+    heading: "Lenders Natalie trusts",
+    intro:
+      "Natalie sends investors to lenders she has worked with and knows: one for the short-term purchase and rehab money, and one for the long-term loan you refinance into.",
+    providers: [jetLending, homeRockMortgage],
+    disclosure: lenderDisclosure,
+  },
   faqs: [
     {
       question: "What's the difference between private money and hard money?",
@@ -476,16 +519,18 @@ export const privateLendingGuide: AcademyGuide = {
     {
       question: "Does Natalie offer private lending?",
       answer:
-        "This page is education only and isn't an offer to lend or invest. To talk through a specific deal or financing options, [book a strategy session](/booking).",
+        "No. Natalie refers investors to lenders she trusts, such as Jet Lending for short-term hard money and HomeRock Mortgage for long-term and DSCR financing. This page is education only and isn't an offer to lend or invest. To talk through a specific deal, [book a strategy session](/booking).",
     },
   ],
   related: [
     { label: "BRRRR strategy in Texas", href: "/investors/brrrr", description: "Where short-term money fits in the cycle." },
     { label: "DSCR loans in Texas", href: "/investors/dscr-loans-texas", description: "The long-term refinance after private money." },
+    { label: "Podcast: Hard money lending explained", href: EP56.href, description: "Natalie's episode with Eddie Gant of Jet Lending." },
     { label: "Investor-friendly vendors", href: "/investors/vendors", description: "Lenders, title and contractors who work with investors." },
-    { label: "How to start investing", href: "/investors/beginner", description: "The fundamentals before your first deal." },
   ],
   sources: [
+    { label: "Jet Lending: Eddie Gant", url: "https://www.jetlending.com/team/eddie-gant" },
+    { label: "HomeRock Mortgage: Loan officers", url: "https://www.homerockmortgage.com/loan-officer" },
     { label: "Barsalou Law: Hard money loans in Texas", url: "https://www.barsalou-law.com/what-is-a-hard-money-loan-in-texas-understanding-private-real-estate-financing-high-interest-rates-and-the-law" },
     { label: "Supreme Court of Texas: American Pearl Group v. National Payment Systems, No. 24-0759 (May 23, 2025)", url: "https://www.txcourts.gov/media/1460588/240759.pdf" },
   ],
