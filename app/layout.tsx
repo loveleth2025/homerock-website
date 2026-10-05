@@ -58,7 +58,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased">
       <head>
-        <link rel="canonical" href={siteConfig.siteUrl} />
         <script {...jsonLdScriptProps(localBusinessSchema())} />
         <script {...jsonLdScriptProps(personSchema())} />
         <script {...jsonLdScriptProps(websiteSchema())} />
