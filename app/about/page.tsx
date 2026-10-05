@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/Button";
 import { CTA } from "@/components/sections/CTA";
 import { siteConfig } from "@/lib/data/navigation";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { jsonLdScriptProps, personSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Natalie Pilkinton",
@@ -26,8 +25,6 @@ const socialLinks = [
 export default function AboutPage() {
   return (
     <>
-      <script {...jsonLdScriptProps(personSchema())} />
-
       <Hero title="About Natalie Pilkinton" subheading="Realtor | Investor | Educator | Podcast Host" />
 
       <Section>
@@ -44,7 +41,7 @@ export default function AboutPage() {
             <div>
               <h2>My Story</h2>
               <p>
-                For over 15 years, I&rsquo;ve been deeply immersed in Houston&rsquo;s real estate market.
+                For over 20 years, I&rsquo;ve been deeply immersed in Houston&rsquo;s real estate market.
                 I&rsquo;ve helped over 500 families buy their dream homes, negotiated 50+ investment
                 properties, and educated thousands about real estate wealth building.
               </p>
