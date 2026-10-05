@@ -148,7 +148,7 @@ export default function InvestorsPage() {
 
       <Section>
         <Container className="max-w-[52rem]">
-          <MeetupCallout />
+          <MeetupCallout withSchema />
           <p className="text-gray-dark">
             Between meetups, Natalie&rsquo;s monthly{" "}
             <Link href="/market-updates" className="text-gold-ink underline underline-offset-2 hover:text-navy">
