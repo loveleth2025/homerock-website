@@ -7,6 +7,7 @@ import { Timeline } from "@/components/sections/Timeline";
 import { CTA } from "@/components/sections/CTA";
 import { Button } from "@/components/ui/Button";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BuyerSeminarCallout } from "@/components/content/BuyerSeminarCallout";
 import { buyerJourney, buyerModules } from "@/lib/content/buyers";
 
 export const metadata: Metadata = buildMetadata({
@@ -49,6 +50,12 @@ export default function FirstTimeBuyersPage() {
               <strong className="text-navy">{section.label}:</strong> {section.text}
             </p>
           ))}
+        </Container>
+      </Section>
+
+      <Section>
+        <Container className="max-w-[52rem]">
+          <BuyerSeminarCallout />
         </Container>
       </Section>
 
