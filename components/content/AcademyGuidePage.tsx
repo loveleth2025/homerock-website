@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/data/navigation";
 import { articleSchema, faqSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 import type { AcademyGuide } from "@/lib/content/academy/types";
+import { MeetupCallout } from "@/components/content/MeetupCallout";
 
 const LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g;
 
@@ -208,6 +209,8 @@ export function AcademyGuidePage({ guide }: { guide: AcademyGuide }) {
               <p className="text-xs text-gray-dark italic mt-md">{guide.recommended.disclosure}</p>
             </section>
           )}
+
+          {guide.showMeetup && <MeetupCallout />}
 
           <section className="mb-2xl">
             <h2>Frequently asked questions</h2>

@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Card, CardTitle, CardCategory, CardDescription } from "@/components/ui/Card";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { MeetupCallout } from "@/components/content/MeetupCallout";
 
 export const metadata: Metadata = buildMetadata({
   title: "Houston Real Estate Investor Academy",
@@ -60,8 +61,8 @@ const learningPath: { step: string; guides: Guide[] }[] = [
         description: "Buy, rehab, rent, refinance and repeat — including refinance seasoning rules.",
         href: "/investors/brrrr",
       },
-      { category: "Coming soon", title: "Multifamily Investing", description: "Scaling from single-family into apartments." },
-      { category: "Coming soon", title: "Passive Investing", description: "Investing alongside an operator instead of owning rentals directly." },
+      { category: "Guide", title: "Multifamily Investing", description: "From duplexes to apartment buildings: how they're valued, financed and run.", href: "/investors/multifamily" },
+      { category: "Guide", title: "Passive Investing", description: "How syndications work and how to vet an operator before you invest.", href: "/investors/passive" },
     ],
   },
   {
@@ -147,14 +148,13 @@ export default function InvestorsPage() {
 
       <Section>
         <Container className="max-w-[52rem]">
-          <h2>Learn alongside other Houston investors</h2>
-          <p>
-            Natalie hosts a Spring/Woodlands real estate investor meetup for new and experienced investors, and
-            publishes a monthly{" "}
+          <MeetupCallout />
+          <p className="text-gray-dark">
+            Between meetups, Natalie&rsquo;s monthly{" "}
             <Link href="/market-updates" className="text-gold-ink underline underline-offset-2 hover:text-navy">
               Houston market update
             </Link>{" "}
-            with what the numbers mean for investors.
+            covers what the numbers mean for investors.
           </p>
         </Container>
       </Section>

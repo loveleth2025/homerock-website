@@ -166,6 +166,7 @@ export const beginnerGuide: AcademyGuide = {
   ],
   disclaimer:
     "This guide is education, not legal, tax or lending advice. Loan terms vary by lender and change over time; talk to your lender, CPA and attorney before you buy.",
+  showMeetup: true,
   cta: investorBooking,
 };
 

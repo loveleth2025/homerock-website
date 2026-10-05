@@ -174,6 +174,11 @@ export const siteConfig = {
     iabsUrl: "https://dtzulyujzhqiu.cloudfront.net/newhomeprogramsllc11526/compliance/tx/entity/11526_3_iabs.pdf",
     consumerProtectionUrl: "https://www.trec.texas.gov/sites/default/files/pdf-forms/CN%201-5.pdf",
   },
+  /** Natalie's monthly investor meetup (organizer: Natalie). */
+  meetup: {
+    name: "Spring/Woodlands Passive & Active Real Estate Investing",
+    url: "https://www.meetup.com/passiveandactiveinvestors/",
+  },
   /** Markets Natalie serves, used in schema areaServed. */
   areasServed: ["Spring", "Houston", "The Woodlands", "Tomball", "Conroe", "Cypress", "Magnolia", "Montgomery"],
   bookingUrl:

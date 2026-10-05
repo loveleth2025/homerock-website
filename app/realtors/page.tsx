@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Card, CardTitle, CardCategory, CardDescription } from "@/components/ui/Card";
 import { ComingSoonButton } from "@/components/ui/ComingSoonButton";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { MeetupCallout } from "@/components/content/MeetupCallout";
 
 export const metadata: Metadata = buildMetadata({
   title: "Realtor Growth Academy",
@@ -87,6 +88,11 @@ export default function RealtorsPage() {
               </Card>
             ))}
           </div>
+        </Container>
+      </Section>
+      <Section>
+        <Container className="max-w-[52rem]">
+          <MeetupCallout audience="realtors" />
         </Container>
       </Section>
     </AcademyLayout>
