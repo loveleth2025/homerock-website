@@ -40,7 +40,7 @@ const audiences = [
   },
   {
     title: "Real estate investors",
-    body: "Natalie invests in real estate herself, including wholesaling and multifamily syndication. She helps investors analyze properties, cash flow and financing, and hosts a Spring/Woodlands real estate investor meetup.",
+    body: "Natalie invests in real estate herself, including wholesaling and multifamily syndication. She helps investors analyze properties, cash flow and financing, and hosts a monthly Spring/Woodlands meetup where investors and Realtors talk through the Texas market.",
     href: "/investors",
     link: "Investor Academy",
   },
@@ -83,7 +83,7 @@ const faqs = [
   {
     question: "Does Natalie Pilkinton work with real estate investors?",
     answer:
-      "Yes. Natalie is an active real estate investor herself, with experience in wholesaling and multifamily syndication, and she hosts a Spring/Woodlands real estate investor meetup.",
+      "Yes. Natalie is an active real estate investor herself, with experience in wholesaling and multifamily syndication, and she organizes a monthly Spring/Woodlands investor meetup with 360+ members.",
   },
   {
     question: "Does Natalie Pilkinton have multifamily investment experience?",
@@ -202,7 +202,11 @@ export default function AboutPage() {
                   .
                 </li>
                 <li>
-                  Hosts a Spring/Woodlands real estate investor meetup with a network of{" "}
+                  Organizes{" "}
+                  <a href={siteConfig.meetup.url} target="_blank" rel="noopener noreferrer" className="text-gold-ink underline underline-offset-2 hover:text-navy">
+                    {siteConfig.meetup.name}
+                  </a>
+                  , a monthly meetup in Spring/The Woodlands where investors and Realtors discuss the Texas market, with a network of{" "}
                   <Link href="/investors/vendors" className="text-gold-ink underline underline-offset-2 hover:text-navy">
                     investor-friendly vendors
                   </Link>

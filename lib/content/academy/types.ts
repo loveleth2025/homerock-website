@@ -54,5 +54,7 @@ export type AcademyGuide = {
   sources?: { label: string; url: string }[];
   /** Shown above sources; for lending, tax and legal topics. */
   disclaimer?: string;
+  /** Show the monthly investor meetup callout before the FAQs. */
+  showMeetup?: boolean;
   cta: { title: string; description: string; label: string };
 };
