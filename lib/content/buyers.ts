@@ -17,7 +17,7 @@ export const buyerFaq = [
   {
     question: "Why does my credit score matter more than I think?",
     answer:
-      "Your credit score determines more than approval — it determines your options. A Conventional loan generally requires a minimum credit score of 620. FHA loans can go as low as 580, and USDA loans (for eligible rural/suburban properties) also allow scores as low as 580 with no down payment required. Knowing which programs you qualify for before you start house hunting can change your whole approach.",
+      "Your credit score determines more than approval — it determines your options. Most lenders look for about 620 on a conventional loan. FHA loans allow scores as low as 580 with 3.5% down (or 500–579 with 10% down). VA and USDA loans have no official program minimum, so each lender sets its own, and USDA requires no down payment on eligible properties. Knowing which programs you qualify for before you start house hunting can change your whole approach.",
   },
   {
     question: "Do I really need to get pre-approved before house hunting?",
@@ -60,19 +60,19 @@ export const buyerModules = [
     sections: [
       {
         label: "Conventional Loan",
-        text: "A non-government-insured loan backed by Fannie Mae and Freddie Mac, subject to financing limits set by the Federal Housing Finance Agency (FHFA). Minimum credit score: 620.",
+        text: "A non-government-insured loan backed by Fannie Mae and Freddie Mac, subject to loan limits set by the Federal Housing Finance Agency (FHFA). As little as 3%–5% down. Most lenders look for a credit score of about 620; Fannie Mae removed its hard 620 minimum for automated underwriting in November 2025.",
       },
       {
         label: "FHA Loan",
-        text: "A federal loan program created by the U.S. Department of Housing and Urban Development (HUD) for lower-income borrowers. Easier to qualify for than a conventional loan, insured by the Federal Housing Administration and issued by an FHA-approved lender.",
+        text: "Insured by the Federal Housing Administration, part of the U.S. Department of Housing and Urban Development (HUD), and issued by FHA-approved lenders. There's no income limit. Easier to qualify for than a conventional loan: 3.5% down with a 580+ credit score, or 10% down with 500–579.",
       },
       {
         label: "USDA Loan",
-        text: "Created by the U.S. Department of Agriculture for borrowers purchasing in eligible rural and suburban areas. Features no down payment, credit scores as low as 580, and a guarantee fee (mortgage insurance) around 2%.",
+        text: "Backed by the U.S. Department of Agriculture for buyers in eligible rural and suburban areas, with household income limits. No down payment, no program minimum credit score (lenders set their own), and a guarantee fee of 1% upfront plus 0.35% a year.",
       },
       {
         label: "VA Loan",
-        text: "Created by HUD for veteran, active-duty, and reservist military personnel, and surviving spouses of veterans. Easier to qualify for than a conventional loan, with credit scores as low as 580 and higher allowable debt-to-income (DTI) ratios.",
+        text: "Guaranteed by the U.S. Department of Veterans Affairs for eligible veterans, active-duty and reserve service members, and surviving spouses. No down payment and no monthly mortgage insurance; a one-time funding fee applies unless waived. No VA minimum credit score — lenders often look for 580–620.",
       },
     ],
   },
@@ -87,11 +87,11 @@ export const buyerModules = [
       },
       {
         label: "Home Sweet Texas Program",
-        text: "Available to both first-time and repeat buyers with low-to-moderate household income. Requires qualifying for an FHA, VA, or USDA loan.",
+        text: "From the Texas State Affordable Housing Corporation (TSAHC). Available to both first-time and repeat buyers with low-to-moderate household income, and works with conventional, FHA and VA loans. Assistance is typically 3%–5% of the loan amount, as a grant or a 0% deferred second loan.",
       },
       {
         label: "Example",
-        text: "On a $300,000 purchase with a 3% down payment ($9,000) and FHA upfront mortgage insurance (1.75%, $5,250), the total loan amount comes to $314,250. A 5% down payment assistance grant ($15,000) can cover the entire down payment, potentially leaving $0 owed toward it at closing.",
+        text: "On a $300,000 FHA purchase, 3.5% down is $10,500. The base loan is $289,500, and FHA's 1.75% upfront mortgage insurance brings it to about $294,566. A 5% assistance grant on that loan (about $14,700) covers the entire down payment, with roughly $4,200 left toward closing costs.",
       },
     ],
   },

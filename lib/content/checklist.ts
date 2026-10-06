@@ -22,10 +22,10 @@ export const homeBuyerChecklist: ChecklistSection[] = [
   {
     title: "Understand Your Loan Options",
     items: [
-      "Conventional — minimum credit score 620, backed by Fannie Mae/Freddie Mac",
-      "FHA — easier to qualify, minimum credit score as low as 580, HUD-insured",
-      "USDA — no down payment, minimum credit score as low as 580, eligible rural/suburban properties only",
-      "VA — for veterans, active-duty, and reservist military personnel and surviving spouses, minimum credit score as low as 580",
+      "Conventional — most lenders look for about 620; 3%–5% down; backed by Fannie Mae/Freddie Mac",
+      "FHA — easier to qualify; 580+ with 3.5% down (500–579 with 10% down); insured by the FHA, no income limit",
+      "USDA — no down payment; eligible rural/suburban areas and income limits; lender sets the credit minimum",
+      "VA — for eligible veterans, service members and surviving spouses; no down payment; lender sets the credit minimum (often 580–620)",
     ],
   },
   {

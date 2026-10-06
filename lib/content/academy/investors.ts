@@ -1,4 +1,5 @@
 import type { AcademyGuide } from "@/lib/content/academy/types";
+import { homeRockMortgage, lenderDisclosure } from "@/lib/content/academy/providers";
 
 /**
  * Investor Academy guides.
@@ -18,23 +19,6 @@ const EP56 = {
   label: "Sugar, Spice & Spirits episode 56: Hard Money Lending Explained, with Eddie Gant of Jet Lending",
   href: "/podcast/transcripts/ep56-hard-money-lending-explained",
 };
-
-/**
- * Natalie's recommended lender (confirmed by Love, Oct 5, 2026; details from HomeRock Mortgage's site).
- * Jet Lending is mentioned only through podcast episode 56, not as a formal recommendation.
- */
-const homeRockMortgage = {
-  company: "HomeRock Mortgage",
-  person: "Brian Lupton, Mortgage Loan Originator",
-  role: "Mortgage broker",
-  description:
-    "Long-term financing for investors and homebuyers, including DSCR loans for rentals and refinances out of short-term debt. Brian co-presents Natalie's Home Buyer Masterclass.",
-  website: "https://www.homerockmortgage.com",
-  license: "NMLS #2035744 · Company NMLS #1691956",
-};
-
-const lenderDisclosure =
-  "HomeRock Mortgage is part of the HomeRock Group, the same group of companies as HomeRock Realty, Natalie's brokerage. You're free to choose any lender, and you should compare terms. Loan programs, rates and approval are set by the lender.";
 
 const investorBooking = {
   title: "Ready to Run the Numbers on Your First Deal?",

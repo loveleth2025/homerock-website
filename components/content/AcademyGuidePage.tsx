@@ -11,6 +11,7 @@ import { siteConfig } from "@/lib/data/navigation";
 import { articleSchema, faqSchema, jsonLdScriptProps } from "@/lib/seo/schema";
 import type { AcademyGuide } from "@/lib/content/academy/types";
 import { MeetupCallout } from "@/components/content/MeetupCallout";
+import { BuyerSeminarCallout } from "@/components/content/BuyerSeminarCallout";
 
 const LINK = /\[([^\]]+)\]\(([^)\s]+)\)/g;
 
@@ -130,7 +131,10 @@ export function AcademyGuidePage({ guide }: { guide: AcademyGuide }) {
               )}
               {section.table && (
                 <div className="overflow-x-auto my-lg">
-                  <table className="w-full text-sm border-collapse">
+                  {section.table.headers.length > 3 && (
+                    <p className="md:hidden text-xs text-gray-dark mb-sm">Swipe the table to see every column →</p>
+                  )}
+                  <table className={`w-full text-sm border-collapse${section.table.headers.length > 3 ? " min-w-[36rem]" : ""}`}>
                     {section.table.caption && <caption className="text-left text-gray-dark mb-sm">{section.table.caption}</caption>}
                     <thead>
                       <tr>
@@ -211,6 +215,7 @@ export function AcademyGuidePage({ guide }: { guide: AcademyGuide }) {
           )}
 
           {guide.showMeetup && <MeetupCallout />}
+          {guide.showSeminar && <BuyerSeminarCallout />}
 
           <section className="mb-2xl">
             <h2>Frequently asked questions</h2>
