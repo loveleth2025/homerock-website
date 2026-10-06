@@ -6,6 +6,8 @@ import { Timeline } from "@/components/sections/Timeline";
 import { FAQ } from "@/components/sections/FAQ";
 import { LearningModuleCard } from "@/components/cards/LearningModuleCard";
 import { ResourceCard } from "@/components/cards/ResourceCard";
+import Link from "next/link";
+import { Card, CardCategory, CardTitle, CardDescription } from "@/components/ui/Card";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { BuyerSeminarCallout } from "@/components/content/BuyerSeminarCallout";
 import { buyerJourney, buyerFaq, buyerModules } from "@/lib/content/buyers";
@@ -16,6 +18,16 @@ export const metadata: Metadata = buildMetadata({
     "Learn conventional, FHA, USDA, and VA loan requirements, Texas down payment assistance programs, and closing cost budgeting with Natalie Pilkinton's Home Buyer Academy.",
   path: "/buyers",
 });
+
+/** Answer-first guides, in the order most buyers need them. */
+const guides = [
+  { title: "First-Time Home Buyer Guide", description: "The eight steps, from credit check to keys.", href: "/buyers/first-time-buyers" },
+  { title: "How Much Money Do You Need?", description: "Down payment, closing costs and a worked Houston example.", href: "/buyers/how-much-money-to-buy-a-house-houston" },
+  { title: "What Credit Score Do You Need?", description: "Minimums for conventional, FHA, VA and USDA loans.", href: "/buyers/credit" },
+  { title: "Loan Options & Down Payment Assistance", description: "Compare loans and Texas assistance programs.", href: "/buyers/financing" },
+  { title: "Closing Costs in Texas", description: "What you'll pay, who pays the title policy, how to lower it.", href: "/buyers/closing-costs-texas" },
+  { title: "Buying New Construction", description: "Builders, incentives and why you need your own Realtor.", href: "/buyers/new-construction" },
+];
 
 const resources = [
   {
@@ -46,6 +58,28 @@ export default function BuyersPage() {
       ctaLabel="Schedule a Consultation →"
     >
       <Section>
+        <Container>
+          <h2>Start Here</h2>
+          <p className="max-w-[48rem] text-gray-dark mb-xl">
+            Natalie&rsquo;s step-by-step guides for buying a home in Houston and across Texas, built from her Home
+            Buyer Masterclass with lender Brian Lupton.
+          </p>
+          <div className="grid grid-cols-3 max-md:grid-cols-1 gap-lg">
+            {guides.map((guide) => (
+              <Link key={guide.href} href={guide.href} className="block h-full">
+                <Card featured>
+                  <CardCategory>Guide</CardCategory>
+                  <CardTitle>{guide.title}</CardTitle>
+                  <CardDescription>{guide.description}</CardDescription>
+                  <span className="text-sm font-semibold text-gold-ink">Read →</span>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="light">
         <Container>
           <h2>The Buyer&rsquo;s Journey</h2>
           <Timeline steps={buyerJourney} />

@@ -56,5 +56,7 @@ export type AcademyGuide = {
   disclaimer?: string;
   /** Show the monthly investor meetup callout before the FAQs. */
   showMeetup?: boolean;
+  /** Show the next home buyer seminar (Eventbrite) before the FAQs. */
+  showSeminar?: boolean;
   cta: { title: string; description: string; label: string };
 };

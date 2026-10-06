@@ -18,6 +18,8 @@ const staticPaths = [
 
   "/buyers",
   "/buyers/first-time-buyers",
+  "/buyers/how-much-money-to-buy-a-house-houston",
+  "/buyers/closing-costs-texas",
   "/buyers/credit",
   "/buyers/financing",
   "/buyers/new-construction",
